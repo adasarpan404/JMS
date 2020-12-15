@@ -4,13 +4,11 @@
   "description": "It is an application ",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "arpan das",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.6"
-  },
+  "devDependencies": {},
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
