@@ -8,7 +8,7 @@ const userRouter = require('./Router/userRouter');
 const maidRouter = require('./Router/maidRouter');
 const reviewRouter = require('./Router/reviewRouter')
 const requestRouter = require('./Router/requestRouter')
-const AppError = require('./utils/appError')
+const AppError = require('./Utils/appError')
 const app = express();
 app.use(morgan('dev'))
 
