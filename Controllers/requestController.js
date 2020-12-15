@@ -3,7 +3,7 @@ const AppError = require('./../Utils/appError')
 const Request = require('./../Model/requestModel')
 
 const factory = require('./handleFactory')
-const catchAsync = require('../utils/catchAsync')
+const catchAsync = require('../Utils/catchAsync')
 
 
 

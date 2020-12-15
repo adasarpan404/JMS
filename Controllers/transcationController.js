@@ -1,10 +1,10 @@
 const factory = require('./handleFactory')
 
 const Transaction = require('./../Model/transactionModel')
-const catchAsync = require('../utils/catchAsync')
+const catchAsync = require('../Utils/catchAsync')
 const Maid = require('./../Model/maidModel')
 const User = require('./../Model/userModel')
-const AppError = require('../utils/appError')
+const AppError = require('../Utils/appError')
 exports.setUserIds = (req, res, next) => {
     if (!req.body.user) {
         req.body.user = req.user._id;

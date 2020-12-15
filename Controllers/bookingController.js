@@ -1,7 +1,7 @@
 const factory = require('./handleFactory')
 
 const booking = require('./../Model/bookingModel')
-const catchAsync = require('../utils/catchAsync')
+const catchAsync = require('../Utils/catchAsync')
 
 exports.setMaidUserIds = catchAsync(async (req, res, next) => {
     if (!req.body.Maid) req.body.Maid = req.params.maidId;

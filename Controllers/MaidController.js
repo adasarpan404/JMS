@@ -1,5 +1,5 @@
-const AppError = require('../utils/appError');
-const catchAsync = require('../utils/catchAsync');
+const AppError = require('../Utils/appError');
+const catchAsync = require('../Utils/catchAsync');
 const Maid = require('./../Model/maidModel')
 
 const factory = require('./handleFactory')
