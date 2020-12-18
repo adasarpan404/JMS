@@ -1,6 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const xss = require('xss-clean')
+const path = require('path')
 const mongoSantize = require('express-mongo-sanitize')
 const helmet = require('helmet')
 const globalErrorHandler = require('./Controllers/errorController')
@@ -10,6 +11,8 @@ const reviewRouter = require('./Router/reviewRouter')
 const requestRouter = require('./Router/requestRouter')
 const AppError = require('./Utils/appError')
 const app = express();
+app.set('view engine', 'pug')
+app.set('views', path.join(__dirname, 'views'))
 app.use(morgan('dev'))
 
 app.use(helmet());
@@ -20,6 +23,9 @@ app.use(mongoSantize());
 
 
 app.use(express.json());
+app.get('/', (req, res) => {
+    res.status(200).render('base');
+})
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/maids', maidRouter);
 app.use('/api/v1/reviews', reviewRouter);
