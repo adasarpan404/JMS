@@ -4,12 +4,14 @@ const xss = require('xss-clean')
 const path = require('path')
 const mongoSantize = require('express-mongo-sanitize')
 const helmet = require('helmet')
+const viewRouter = require('./Router/viewRouter')
 const globalErrorHandler = require('./Controllers/errorController')
 const userRouter = require('./Router/userRouter');
 const maidRouter = require('./Router/maidRouter');
 const reviewRouter = require('./Router/reviewRouter')
 const requestRouter = require('./Router/requestRouter')
 const AppError = require('./Utils/appError')
+
 const app = express();
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
@@ -23,9 +25,7 @@ app.use(mongoSantize());
 
 
 app.use(express.json());
-app.get('/', (req, res) => {
-    res.status(200).render('base');
-})
+app.use('/', viewRouter)
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/maids', maidRouter);
 app.use('/api/v1/reviews', reviewRouter);
