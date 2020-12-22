@@ -1,0 +1,164 @@
+* {
+    margin: 0px;
+    padding: 0px;
+
+}
+h2{
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    top: 195px;
+    font-size: 42px;
+    letter-spacing: .01em;
+    line-height: 1.4;
+}
+span{
+    font-size: 55px;
+ 
+}
+.navigation{
+    color: white;
+    text-decoration: none;
+    position: relative;
+    top: 23px;
+    left: 8px;
+
+}
+
+/* class */
+
+.c1{
+    color: white;
+background-image: url(/Image/house-maid-services-bangalore.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+left: -85px;
+height: 100vh;
+
+}
+.heading{
+    background: #206a5d8a;
+    position: absolute;
+    left: 85px;
+    height: 100vh;
+    padding: 11px 85px;
+}
+
+.p1 {
+    
+       
+    font-family: 'Heebo', sans-serif;
+    position: relative;
+    top: 415px;
+    left: 3px;
+    color: #ffffffcf;
+    
+}
+.p2{
+    font-family: 'Heebo', sans-serif;
+    position: relative;
+    top: 420px;
+    left: 3px;
+    color: #ffffffcf
+}   
+.heading2{
+    position: relative;
+    top: 130px;
+    left: 55px;
+    
+}
+.heading2 h3 {
+    color: #206a5d;
+    font-size: 40px;
+}
+.heading2 p {
+    font-family: 'Heebo', sans-serif;
+    color: #707070;
+    font-size: 22px;
+}
+
+
+/* button */
+
+
+    .button{
+      
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ 
+   flex-direction: column;
+   left: 15px;
+
+    }
+    .button1{
+       
+    position: relative;
+    top: 150px;
+    display: inline-block;
+    padding: 22px 175px;
+    margin: 10px 0;
+    text-decoration: none;
+   color: white;
+    background-color: #206a5d;
+    line-height: 15px;
+    font-size: 25px;
+   
+    font-weight: bold;
+    border-radius: 50px;
+   
+}
+      .button2{
+        position: relative;
+        top: 155px;
+        display: inline-block;
+        padding: 22px 135px;
+        margin: 10px 0;
+        text-decoration: none;
+       color: #206a5d;
+        border: 2px solid #206a5d;
+        line-height: 15px;
+        font-size: 25px;
+        font-weight: bold;
+        border-radius: 50px;
+       
+        
+      }
+
+
+
+      /* background image  */
+      .cart{
+        position: absolute;
+        top: 100px;
+        width: 85px;
+        opacity: 0.05;
+        padding: 0px 35px;
+        z-index: -1;
+          }
+     /* footer */
+     footer{
+        position: absolute;
+        top: 23px;
+        right: 25px;
+        display: flex;
+
+     }
+     h5{
+        font-size: 15px;
+        color: #0000008f;
+     }
+     h5 a{
+         text-decoration: none;
+         color: #206a5d;
+         font-size: 17px;
+     }
+     h4{
+        margin-top: 210px;
+        font-family: 'Heebo', sans-serif;
+        
+        color: #707070;
+        font-size: 22px;
+       
+        padding: 0px 56px;
+     }

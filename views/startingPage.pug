@@ -1,0 +1,57 @@
+
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title The Maid
+  //- bootstrapfile
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1' crossorigin='anonymous')
+  //- now we add Css in my html file
+  link(rel='stylesheet' href='/CSS/maid.css')
+  //- google font
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap' rel='stylesheet')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet')
+  link(rel='preconnect' href='https://fonts.gstatic.com')
+  link(href='https://fonts.googleapis.com/css2?family=Heebo&display=swap' rel='stylesheet')
+section#m1
+  .container-fluid
+    .row
+      .col-lg-6.c1
+        .heading
+          a.navigation(href='#')  themaid
+          h2
+            | Hire The Experience 
+            span
+              u MAID
+            br
+            |                 For Your Home.
+          p.p1
+            | Press on the option 
+            u  Hire a Maid 
+            |  and hire for your
+            br
+            |                 household chores.
+          p.p2
+            | Press on the option 
+            u Register as a maid 
+            |  and add your
+            |                 profile so that you can find work in many homes in the coming
+            |                 times.
+      .col-lg-6.c2
+        .heading2
+          h3 Welcome
+          p
+            | Thousands of maid are registered and hired for 
+            br
+            |                 Household chores.
+        .button
+          a.button1(href='/login') Hire a Maid
+          a.button2(href='/maid-login') Register as a Maid
+        section.cart
+          img.cart1(src='/Image/cleaning-cart.png' alt='')
+        footer
+          h5
+            | Having troubles?
+            a.help(href='#')  Get help 
+        h4 A maid is a household worker who cleans and performs various other tasks. 
