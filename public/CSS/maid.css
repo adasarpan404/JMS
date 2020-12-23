@@ -6,7 +6,8 @@
 h2{
     font-family: 'Roboto', sans-serif;
     position: absolute;
-    top: 195px;
+    top: 165px;
+    left: 32px;
     font-size: 42px;
     letter-spacing: .01em;
     line-height: 1.4;
@@ -28,20 +29,20 @@ span{
 
 .c1{
     color: white;
-background-image: url(/Image/house-maid-services-bangalore.jpg);
+background-image: url(/Image/photoshop.png);
 background-repeat: no-repeat;
 background-size: cover;
 position: relative;
-left: -85px;
+
 height: 100vh;
 
 }
 .heading{
-    background: #206a5d8a;
+   
     position: absolute;
-    left: 85px;
+    /* left: 85px; */
     height: 100vh;
-    padding: 11px 85px;
+    padding: 0 35px;
 }
 
 .p1 {
@@ -49,35 +50,35 @@ height: 100vh;
        
     font-family: 'Heebo', sans-serif;
     position: relative;
-    top: 415px;
-    left: 3px;
+    top: 330px;
+  
     color: #ffffffcf;
     
 }
 .p2{
     font-family: 'Heebo', sans-serif;
     position: relative;
-    top: 420px;
-    left: 3px;
+    top: 345px;
+   
     color: #ffffffcf
 }   
 .heading2{
     position: relative;
-    top: 130px;
-    left: 55px;
-    
+    top: 98px;
+    left: 40px;
+    display: inline-block;
 }
 .heading2 h3 {
     color: #206a5d;
-    font-size: 40px;
+    font-size: 30px;
 }
 .heading2 p {
     font-family: 'Heebo', sans-serif;
     color: #707070;
-    font-size: 22px;
+    font-size: 17px;
+    padding-left: 6px;
+
 }
-
-
 /* button */
 
 
@@ -88,13 +89,12 @@ height: 100vh;
    align-items: center;
  
    flex-direction: column;
-   left: 15px;
-
+  
     }
     .button1{
        
     position: relative;
-    top: 150px;
+    top: 135px;
     display: inline-block;
     padding: 22px 175px;
     margin: 10px 0;
@@ -105,14 +105,14 @@ height: 100vh;
     font-size: 25px;
    
     font-weight: bold;
-    border-radius: 50px;
+   
    
 }
       .button2{
         position: relative;
-        top: 155px;
+        top: 145px;
         display: inline-block;
-        padding: 22px 135px;
+        padding: 22px 133px;
         margin: 10px 0;
         text-decoration: none;
        color: #206a5d;
@@ -120,7 +120,7 @@ height: 100vh;
         line-height: 15px;
         font-size: 25px;
         font-weight: bold;
-        border-radius: 50px;
+       
        
         
       }
@@ -128,14 +128,15 @@ height: 100vh;
 
 
       /* background image  */
-      .cart{
+      /* .cart{
         position: absolute;
-        top: 100px;
+        top: 36px;
         width: 85px;
         opacity: 0.05;
-        padding: 0px 35px;
+        
         z-index: -1;
-          }
+    
+          } */
      /* footer */
      footer{
         position: absolute;
@@ -154,11 +155,53 @@ height: 100vh;
          font-size: 17px;
      }
      h4{
-        margin-top: 210px;
+        margin-top: 195px;
         font-family: 'Heebo', sans-serif;
         
         color: #707070;
-        font-size: 22px;
-       
-        padding: 0px 56px;
+        
+       font-size: 18px;
+        padding: 0px 48px;
      }
+     @media (max-width:1042px)
+     {
+.button1{
+padding: 22px 110px;
+left: -18px;
+}
+.button2{
+padding: 22px 70px;
+left: -18px;
+}
+.cart{
+left: 460px;
+}
+.heading2{
+    left: 35px;
+
+}
+.heading2 p{
+    font-size: 15px;
+}
+h4{
+    font-size: 15px;
+}
+h2{
+    top: 144px;
+    left: 40px;
+    font-size: 39px;
+    
+    padding: 0 15px;
+}
+.p1{
+    padding: 0 15px;
+}
+.p2{
+    padding: 0 15px;
+}
+
+
+     }
+   
+     
+       

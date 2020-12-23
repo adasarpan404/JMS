@@ -1,13 +1,13 @@
-
+doctype html
 head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   title The Maid
-  //- bootstrapfile
+  // bootstrapfile
   link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1' crossorigin='anonymous')
-  //- now we add Css in my html file
+  // now we add Css in my html file
   link(rel='stylesheet' href='/CSS/maid.css')
-  //- google font
+  // google font
   link(rel='preconnect' href='https://fonts.gstatic.com')
   link(href='https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap' rel='stylesheet')
   link(rel='preconnect' href='https://fonts.gstatic.com')
@@ -24,13 +24,11 @@ section#m1
             | Hire The Experience 
             span
               u MAID
-            br
             |                 For Your Home.
           p.p1
             | Press on the option 
             u  Hire a Maid 
             |  and hire for your
-            br
             |                 household chores.
           p.p2
             | Press on the option 
@@ -45,12 +43,13 @@ section#m1
             | Thousands of maid are registered and hired for 
             br
             |                 Household chores.
-            //- buttons
         .button
           a.button1(href='/login') Hire a Maid
           a.button2(href='/maid-login') Register as a Maid
-        section.cart
-          img.cart1(src='/Image/cleaning-cart.png' alt='')
+        //
+          <section class="cart">
+          <img src="/Image/cleaning-cart.png" alt="" class="cart1" />
+          </section>
         footer
           h5
             | Having troubles?
