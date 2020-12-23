@@ -46,9 +46,9 @@ const sendErrorDev = (err, req, res) => {
 const sendErrorProd = (err, req, res) => {
 
     if (err.isOperational) {
-        res.status(err.statusCode).json({
-            status: err.status,
-            message: err.message,
+        res.status(200).render('base', {
+            title: 'something went wrong',
+            purpose: err.message
         });
 
         // Programming or other unknown error: don't leak error details
