@@ -34,9 +34,12 @@ const sendErrorDev = (err, req, res) => {
             stack: err.stack
         });
     }
-
-    // B) RENDERED WEBSITE
-    console.log(err)
+    else {
+        res.status(200).render('base', {
+            purpose: 'Something went wrong'
+        })
+    }
+    // B) RENDERED WEBS
 }
 
 const sendErrorProd = (err, req, res) => {
