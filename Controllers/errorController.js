@@ -36,7 +36,8 @@ const sendErrorDev = (err, req, res) => {
     }
     else {
         res.status(200).render('base', {
-            purpose: 'Something went wrong'
+            title: 'something went wrong',
+            purpose: err.message
         })
     }
     // B) RENDERED WEBS
