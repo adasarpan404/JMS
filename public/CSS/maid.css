@@ -103,7 +103,7 @@ height: 100vh;
     background-color: #206a5d;
     line-height: 15px;
     font-size: 25px;
-   
+   border-radius: 50px;
     font-weight: bold;
    
    
@@ -117,6 +117,7 @@ height: 100vh;
         text-decoration: none;
        color: #206a5d;
         border: 2px solid #206a5d;
+        border-radius: 50px;
         line-height: 15px;
         font-size: 25px;
         font-weight: bold;
@@ -128,7 +129,7 @@ height: 100vh;
 
 
       /* background image  */
-      /* .cart{
+       .cart{
         position: absolute;
         top: 36px;
         width: 85px;
@@ -136,7 +137,7 @@ height: 100vh;
         
         z-index: -1;
     
-          } */
+          } 
      /* footer */
      footer{
         position: absolute;
