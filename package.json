@@ -4,8 +4,8 @@
   "description": "It is an application ",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js", 
-    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js", 
+    "start": "nodemon server.js",
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
     "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "arpan das",
@@ -28,6 +28,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.13",
     "morgan": "^1.10.0",
+    "multer": "^1.4.2",
     "nodemailer": "^6.4.16",
     "pug": "^3.0.0",
     "validator": "^13.1.17",
