@@ -15,7 +15,7 @@ const AppError = require('./Utils/appError')
 const app = express();
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
-app.use(express.static(`${__dirname}/public`));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'))
 
 app.use(helmet());

@@ -1,4 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.alert {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 9999;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1.6rem 15rem;
+    -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+
+.alert--success {
+    background-color: #20bf6b;
+}
+
+.alert--error {
+    background-color: #eb4d4b;
+}
+
+.login-container {
+    height: 100vh;
+    width: 100%;
+}
+
+.login-form {
+    max-width: 100%;
+    width: 370px;
+    padding: 15px;
+    margin: auto;
+}
+
+.login-form h3 {
+    color: #206A5D;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-color: #adadad;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    padding: 0px;
+    color: #495057;
+    height: auto;
+    border-radius: 0px;
+    background-color: #fff;
+    background-clip: padding-box;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #206A5D;
+    outline: 0;
+    box-shadow: none;
+}
+
+.killer {
+    color: #041c2494;
+    font-size: 15px;
+}
+
+.login-form a {
+    text-decoration: none;
+}
+
+.login-form a:hover {
+    color: #206A5D;
+}
+
+.form-text {
+    color: #041c2494;
+    font-size: 12px;
+}
+
+p a {
+    color: #206A5D;
+    font-size: 15px;
+}
+
+p {
+    font-size: 17px;
+    color: #0e0d0d94;
+}
+
+.forgot-link {
+    color: #206A5D;
+    font-size: 15px;
+}
+
+.forgot-link a {
+    color: #206A5D;
+    font-size: 15px;
+}
+
+.btn-custom {
+    background-color: #206A5D;
+    color: white;
+    border-color: #206A5D;
+    min-height: 30px;
+}
+
+.btn-custom:focus,
+.btn-custom:hover,
+.btn-custom:active,
+.btn-custom:active:focus {
+    background-color: #1a5b50;
+    color: white;
+}
+
+.form-check-input:checked {
+    background-color: #206A5D;
+    border-color: #206A5D;
+}
     *{
         margin: 0;
         padding: 0;
