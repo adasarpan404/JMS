@@ -38,10 +38,13 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: 'default.jpg'
     },
+    phonenumber: {
+        type: Number,
+        required: [true, 'You have to enter phone number']
+    },
     city: {
         type: String,
         enum: ['Delhi', 'Noida', 'Mumbai'],
-        required: [true, 'you have to register your city']
     },
     wallet: {
         type: Number,

@@ -15,3 +15,6 @@ exports.getMaidLoginPage = catchAsync(async (req, res, next) => {
         purpose: 'This is for Maid login page'
     })
 })
+exports.getsignupPage = catchAsync(async (req, res, next) => {
+    res.status(200).render('signup')
+})
