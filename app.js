@@ -11,6 +11,7 @@ const maidRouter = require('./Router/maidRouter');
 const reviewRouter = require('./Router/reviewRouter')
 const requestRouter = require('./Router/requestRouter')
 const AppError = require('./Utils/appError')
+const cookieParser = require('cookie-parser')
 
 const app = express();
 app.set('view engine', 'pug')
@@ -26,6 +27,7 @@ app.use(mongoSantize());
 
 
 app.use(express.json());
+app.use(cookieParser())
 app.use('/', viewRouter)
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/maids', maidRouter);
