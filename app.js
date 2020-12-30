@@ -29,6 +29,7 @@ app.use(mongoSantize());
 app.use(express.json());
 app.use(cookieParser())
 app.use('/', viewRouter)
+
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/maids', maidRouter);
 app.use('/api/v1/reviews', reviewRouter);

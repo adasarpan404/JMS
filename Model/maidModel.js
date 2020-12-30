@@ -13,6 +13,10 @@ const maidSchema = new mongoose.Schema({
         unique: true,
         validate: [validator.isEmail, 'please provide a valide email']
     },
+    phonenumber: {
+        type: Number,
+        required: [true, 'please provide your Phone Number']
+    },
     password: {
         type: String,
         required: [true, 'please provide password'],
@@ -21,7 +25,6 @@ const maidSchema = new mongoose.Schema({
     },
     passwordConfirm: {
         type: String,
-        required: [true, 'please confirm your password'],
         validate: {
             validator: function (el) {
                 return el === this.password;
@@ -31,7 +34,6 @@ const maidSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: [true, ' A maid should have price']
     },
     ratingsAverage: {
         type: Number,
@@ -51,7 +53,6 @@ const maidSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: ['house-clean', 'cook', 'both'],
-        required: [true, 'you have to define a role']
     },
     videos: {
         type: String,
@@ -63,7 +64,6 @@ const maidSchema = new mongoose.Schema({
     city: {
         type: String,
         enum: ['Delhi', 'Noida', 'Mumbai'],
-        required: [true, 'please enter your city']
     },
 
     passwordChangeAt: Date,

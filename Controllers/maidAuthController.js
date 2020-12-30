@@ -15,7 +15,7 @@ const createSendToken = (user, statusCode, res) => {
     };
     if (process.env.NODE_ENV === 'production ') cookieOptions.secure = true;
 
-    res.cookie('jwt', token, cookieOptions);
+    res.cookie('jwtmaid', token, cookieOptions);
 
     user.password = undefined;
 
@@ -29,14 +29,20 @@ const createSendToken = (user, statusCode, res) => {
 }
 
 exports.signUp = catchAsync(async (req, res, next) => {
-    const newUser = await Maid.create(req.body);
+    const newUser = await Maid.create({
+        name: req.body.name,
+        email: req.body.email,
+        phonenumber: req.body.phonenumber,
+        password: req.body.password,
+        passwordConfirm: req.body.passwordConfirm
+    });
 
     createSendToken(newUser, 201, res);
 });
 
 exports.login = catchAsync(async (req, res, next) => {
     const { email, password } = req.body;
-
+    e
     if (!email || !password) {
         return next(new AppError('please provide email and password', 400))
     }
@@ -51,11 +57,13 @@ exports.login = catchAsync(async (req, res, next) => {
 
 exports.protect = catchAsync(async (req, res, next) => {
     let token;
+
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' '[1]);
-    } else if (req.cookies.jwt) {
-        token = req.cookies.jwt;
+    } else if (req.cookies.jwtmaid) {
+        token = req.cookies.jwtmaid;
     }
+
     if (!token) {
         return next(new AppError('you are not logged in! Please log in to get access', 401))
     }
@@ -64,11 +72,31 @@ exports.protect = catchAsync(async (req, res, next) => {
     if (!currentUser) {
         return next(new AppError(' The User belonging to this token does not longer exist or you are not reqistered for this route', 401))
     }
-    if (currentUser.changedPasswordAt(decoded.iat)) {
+    if (currentUser.changePasswordAfter(decoded.iat)) {
         return next(new AppError('user recently changedPassword! please login again', 401))
     }
     req.user = currentUser;
     res.locals.user = currentUser;
+    next();
+});
+exports.isLoggedIn = catchAsync(async (req, res, next) => {
+    if (req.cookies.jwtmaid) {
+        try {
+            const decoded = await promisify(jwt.verify)(req.cookies.jwtmaid, process.env.JWT_SECRET);
+            const currentUser = await Maid.findById(decoded.id);
+            if (!currentUser) {
+                return next();
+            }
+            if (currentUser.changePasswordAfter(decoded.iat)) {
+                return next()
+            }
+            res.locals.user = currentUser;
+            return res.status(200).redirect('/maidOverview')
+        }
+        catch (err) {
+            return next();
+        }
+    }
     next();
 })
 
