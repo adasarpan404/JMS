@@ -1,0 +1,169 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1' crossorigin='anonymous')
+  // fontawesome icon
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
+  title Maid-Registration form
+  style.
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+    body {
+    font-family: 'Roboto', sans-serif;
+    }
+    .login-container {
+    height: 100vh;
+    width: 100%;
+    }
+    .contact-form {
+    max-width: 100%;
+    width: 550px;
+    padding: 30px;
+    margin: auto;
+    transition: 2s;
+    }
+    .contact-form:hover{
+    box-shadow:0 25px 30px #c9c9c9 ;
+    }
+    .form-control {
+    display: block;
+    width: 100%;
+    font-size: .91rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-color: #adadad;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    padding: 5px;
+    color: #495057;
+    height: auto;
+    border-radius: 0px;
+    background-color: #fff;
+    background-clip: padding-box;
+    }
+    .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #206a5d;
+    outline: 0;
+    box-shadow: none;
+    }
+    .killer {
+    color: #041c2494;
+    font-size: 15px;
+    }
+    .contact-form a {
+    text-decoration: none;
+    }
+    .contact-form a:hover {
+    color: #206a5d;
+    }
+    .contact-form h3 {
+    margin-bottom: 4rem;
+    color: #206a5d;
+    padding-right: 10px;
+    }
+    .form-text {
+    color: #041c2494;
+    font-size: 12px;
+    }
+    p a {
+    color: #206a5d;
+    font-size: 15px;
+    }
+    p {
+    font-size: 17px;
+    color: #0e0d0d94;
+    }
+    .btn-custom {
+    background-color: #206a5d;
+    color: white;
+    border-color: #206a5d;
+    min-height: 30px;
+    }
+    .btn-custom:focus,
+    .btn-custom:hover,
+    .btn-custom:active,
+    .btn-custom:active:focus {
+    background-color: #1a5b50;
+    color: white;
+    }
+    .head {
+    background-color: teal;
+    width: 100%;
+    height: 100vh;
+    }
+    .heading1 {
+    text-align: center;
+    margin-top: 150px;
+    }
+    #id1 {
+    margin-left: 2rem;
+    }
+    #id2 {
+    margin-left: 2rem;
+    }
+    .top {
+    margin-bottom: 2rem;
+    }
+    .top a {
+    margin-left: 8px;
+    color: #206a5d;
+    }
+    .top i {
+    color: #206a5d;
+    }
+    @media (max-width: 436px) and (min-width: 389px) {
+    #id1 {
+    margin-left: 0px;
+    }
+    #id2 {
+    margin-left: 0px;
+    }
+    }
+    @media (max-width: 388px) {
+    #id1 {
+    margin-left: 0px;
+    }
+    #id2 {
+    margin-left: 0px;
+    }
+    .killer {
+    font-size: 12px;
+    }
+    .form-control {
+    font-size: .8rem;
+    }
+    }
+.login-container.d-flex.justify-content-end
+  form.contact-form.text-center
+    .top.d-flex.align-items-center.justify-content-start
+      i.fas.fa-arrow-left
+      a(href='#') BACK
+    h3.font-weight-light Contact Information
+    .form-group.mt-2
+      label.d-flex.align-items-center.justify-content-between.killer(for='inputtext3') Address-1*
+      input#address1.form-control(type='text' required='')
+    .form-group.mt-4
+      label.d-flex.align-items-center.justify-content-between.killer(for='inputtext4')
+        | Address-2
+      input#address2.form-control(type='text' )
+    .form-group.mt-4
+      .row
+        .col
+          label.d-flex.align-items-center.justify-content-between.killer(for='inputtext5') Country
+          input#country.form-control(type='text' required='')
+        #id2.col
+          label.d-flex.align-items-center.justify-content-between.killer(for='inputpassword6') City
+          input#city.form-control(type='text' required='')
+    .form-group.mt-4
+      .row
+        .col
+          label.d-flex.align-items-center.justify-content-between.killer(for='inputtext7') State
+          input#state.form-control(type='text' required='')
+        #id1.col
+          label.d-flex.align-items-center.justify-content-between.killer(for='inputpassword8') Zip-Code
+          input#zipcode.form-control(type='number' required='')
+    .form-group.mt-4
+    button.btn.mt-5.btn-class.btn-custom.btn-block.rounded-pill.btn-ex-lg.px-5(type='submit') SUBMIT
+script(src="/js/bundle.js") 

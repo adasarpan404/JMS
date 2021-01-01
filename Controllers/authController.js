@@ -3,7 +3,7 @@ const { promisify } = require('util');
 const AppError = require('../Utils/appError');
 const catchAsync = require('../Utils/catchAsync')
 const User = require('./../Model/userModel')
-const sendEmail = require('./../Utils/email')
+const Email = require('./../Utils/email')
 
 const signToken = id => {
 
@@ -44,7 +44,9 @@ exports.signUp = catchAsync(async (req, res, next) => {
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm
     });
-
+    const url = `${req.protocol}://${req.get('host')}/`;
+    console.log(url);
+    await new Email(newUser, url).sendWelcome();
     createSendToken(newUser, 201, res);
 
 })
@@ -188,5 +190,6 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
     await user.save();
+    createSendToken(user, 200, res);
 
 })

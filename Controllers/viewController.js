@@ -33,3 +33,11 @@ exports.getMaidOverview = catchAsync(async (req, res, next) => {
         purpose: req.user.name
     })
 })
+
+exports.getUpdatePersonalInformation = catchAsync(async (req, res, next) => {
+    res.status(200).render('updatepersonal')
+})
+
+exports.getUpdateContactInformation = catchAsync(async (req, res, next) => {
+    res.status(200).render('updateContact')
+})

@@ -32,6 +32,46 @@ const maidSchema = new mongoose.Schema({
             message: 'passwords are not the same'
         }
     },
+    dateOfBirth: {
+        type: Date,
+    },
+    dateOfJoining: {
+        type: Date,
+    },
+    Gender: {
+        type: String,
+        enum: ['male', 'female', 'other']
+    },
+    maritalstatus: {
+        type: String,
+        enum: ['married', 'unmarried', 'divorced']
+    },
+    religion: {
+        type: String,
+        enum: ['hindu', 'muslim', 'sikh', 'christian']
+    },
+    languageknown: {
+        type: String,
+        enum: ['Assamese', 'Bengali', 'Bodo', 'Dogri', 'Gujarati', 'Hindi', 'kashmiri', 'Kannada', 'Konkani', 'Maithili', 'Malayalam', 'Manipuri', 'Marathi', 'Nepali', 'Oriya', 'Punjabi', 'Tamil', 'Telugu', 'Santali', 'Sindhi', 'Urdu']
+    },
+    address1: {
+        type: String,
+    },
+    address2: {
+        type: String,
+    },
+    Country: {
+        type: String,
+    },
+    City: {
+        type: String,
+    },
+    state: {
+        type: String,
+    },
+    zipcode: {
+        type: Number,
+    },
     price: {
         type: Number,
     },

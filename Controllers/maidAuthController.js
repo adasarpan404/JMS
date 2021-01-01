@@ -42,7 +42,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
 exports.login = catchAsync(async (req, res, next) => {
     const { email, password } = req.body;
-    e
+
     if (!email || !password) {
         return next(new AppError('please provide email and password', 400))
     }
@@ -99,7 +99,13 @@ exports.isLoggedIn = catchAsync(async (req, res, next) => {
     }
     next();
 })
-
+exports.logout = catchAsync(async (req, res, next) => {
+    res.cookie('jwtmaid', 'loggedout', {
+        expires: new Date(Date.now() + 10 * 1000),
+        httpOnly: true
+    })
+    res.status(200).json({ status: 'success' })
+})
 exports.forgotPassword = catchAsync(async (req, res, next) => {
     const user = await Maid.findOne({ email: req.body.email });
     if (!user) {
@@ -157,4 +163,43 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
     await user.save();
+    createSendToken(user, 200, res);
+})
+exports.updatePersonalInformation = catchAsync(async (req, res, next) => {
+    const user = await Maid.findById(req.user.id);
+    if (!user) {
+        return next(new AppError('token is invalid or expired', 400));
+    }
+
+
+    user.name = req.body.name;
+    user.dateOfBirth = req.body.dateOfBirth;
+    user.dateOfJoining = req.body.dateOfJoining;
+    user.Gender = req.body.Gender;
+    user.maritalstatus = req.body.maritalstatus;
+    user.religion = req.body.religion;
+    user.languageknown = req.body.languageknown;
+    await user.save({ validateBeforeSave: false });
+    res.status(200).json({
+        status: 'success',
+        user,
+    })
+})
+
+exports.updateContactInformation = catchAsync(async (req, res, next) => {
+    const user = await Maid.findById(req.user.id);
+    if (!user) {
+        return next(new AppError('token is invalid or expired', 400));
+    }
+    user.address1 = req.body.address1;
+    user.address2 = req.body.address2;
+    user.Country = req.body.Country;
+    user.City = req.body.City;
+    user.state = req.body.state;
+    user.zipcode = req.body.zipcode;
+    console.log(user)
+    res.status(200).json({
+        status: 'success',
+        user,
+    })
 })

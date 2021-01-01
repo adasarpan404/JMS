@@ -60,6 +60,19 @@ export const logout = async () => {
         showAlert('error', 'Error logging out! Try again.');
     }
 }
+export const maidLogout = async () => {
+    try {
+        const res = await axios({
+            method: 'GET',
+            url: '/api/v1/maids/logout'
+        });
+        if ((res.data.status = 'success')) location.assign('/');
+    } catch (err) {
+
+        showAlert('error', 'Error logging out! Try again.');
+    }
+
+}
 
 export const maidLogin = async (email, password) => {
     try {
@@ -72,7 +85,7 @@ export const maidLogin = async (email, password) => {
             }
         })
         if (res.data.status === 'success') {
-            showAlert('Sucess', 'Login in with Maid Account is successful');
+            showAlert('success', 'Login in with Maid Account is successful');
             window.setTimeout(() => {
                 location.assign('/maidOverview')
             }, 1500)

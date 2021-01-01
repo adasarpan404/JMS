@@ -1,0 +1,17 @@
+extends baseEmail
+
+block content
+  p Hi #{firstName},
+  p Welcome to HireAMaid, we're glad to have you 🎉🙏
+  p We're all a big familiy here,
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    tbody
+      tr
+        td(align='left')
+          table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+            tbody
+              tr
+                td
+                  a(href=`${url}`, target='_blank') Open website
+  p If you need any help with website, please don't hesitate to contact me!
+  p - Hemant Varshney, CEO

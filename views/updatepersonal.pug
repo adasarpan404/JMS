@@ -1,0 +1,231 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1' crossorigin='anonymous')
+  title Maid-Registration form
+  style.
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+    body {
+    font-family: "Roboto", sans-serif;
+    }
+    .login-container {
+    height: 100vh;
+    width: 100%;
+    }
+    .personal-form {
+    max-width: 100%;
+    width: 550px;
+    padding: 30px;
+    margin: auto;
+    transition: 2s;
+    }
+    .personal-form:hover{
+    box-shadow:0 25px 30px #c9c9c9 ;
+    }
+    .form-control {
+    display: block;
+    width: 100%;
+    font-size: .91rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-color: #adadad;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    padding: 5px;
+    color: #495057;
+    height: auto;
+    border-radius: 0px;
+    background-color: #fff;
+    background-clip: padding-box;
+    }
+    .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #206a5d;
+    outline: 0;
+    box-shadow: none;
+    }
+    .killer {
+    color: #041c2494;
+    font-size: 17px;
+    }
+    .personal-form a {
+    text-decoration: none;
+    }
+    .personal-form a:hover {
+    color: #206a5d;
+    }
+    .personal-form h3 {
+    margin-bottom: 4rem;
+    color: #206a5d;
+    padding-right: 10px;
+    }
+    .form-text {
+    color: #041c2494;
+    font-size: 12px;
+    }
+    p a {
+    color: #206a5d;
+    font-size: 15px;
+    }
+    p {
+    font-size: 17px;
+    color: #0e0d0d94;
+    }
+    .btn-custom {
+    background-color: #206a5d;
+    color: white;
+    border-color: #206a5d;
+    min-height: 30px;
+    }
+    .btn-custom:focus,
+    .btn-custom:hover,
+    .btn-custom:active,
+    .btn-custom:active:focus {
+    background-color: #1a5b50;
+    color: white;
+    }
+    .head {
+    background-color: teal;
+    width: 100%;
+    height: 100vh;
+    }
+    .heading1 {
+    text-align: center;
+    margin-top: 150px;
+    }
+    #id1{
+    margin-left: 2rem;
+    }
+    #id2{
+    margin-left: 2rem;
+    }
+    #id3{
+    margin-left: 2rem;
+    }
+    #id4{
+    margin-left: 2rem;
+    }
+    @media (max-width: 436px) and (min-width: 389px){
+    #id1{
+    margin-left: 0px;
+    }
+    #id2{
+    margin-left: 0px;
+    }
+    #id3{
+    margin-left: 0px;
+    }
+    #id4{
+    margin-left: 0px;
+    }
+    }
+    @media (max-width: 388px){
+    #id1{
+    margin-left: 0px;
+    }
+    #id2{
+    margin-left: 0px;
+    margin-top: 1.5rem;
+    }
+    #id3{
+    margin-left: 0px;
+    }
+    #id4{
+    margin-left: 0px;
+    }
+    .killer{
+    font-size: 12px;
+    }
+    .form-control{
+    font-size: .8rem;
+    }
+    }
+.login-container.d-flex.justify-content-end
+  form.personal-form.text-center
+    h3.font-weight-light Personal Information
+    .form-group.mt-4
+      .row
+        .col
+          label.d-flex.align-items-center.justify-content-between.killer(for='inputtext1')
+            | First
+            | Name
+          input#inputtext1.form-control(type='text' aria-label='First name' required)
+        #id1.col
+          label.d-flex.align-items-center.justify-content-between.killer(for='inputtext2')
+            | Last
+            | Name
+          input#inputtext2.form-control(type='text' aria-label='Last name' required)
+    .form-group.mt-4
+      .row
+        .col
+          label.d-flex.align-items-center.justify-content-between.killer(for='inputnumber1')
+            | Date
+            | of
+            | Birth
+          input#inputnumber1.form-control(type='date' required)
+        #id2.col
+          label.d-flex.align-items-center.justify-content-between.killer(for='inputnumber2')
+            | Date
+            | of
+            | Joining
+          input#inputnumber2.form-control(type='date' required)
+    .form-group.mt-4
+      .row
+        .col
+          label.d-flex.align-items-center.justify-content-between.killer(for='text') Gender
+          select#gender.form-select.form-control(aria-label='Default select example' required='')
+            option(selected disabled value="") select
+            option(value='male') Male
+            option(value='female') Female
+            option(value='other') Other
+        #id3.col
+          label.d-flex.align-items-center.justify-content-between.killer(for='text') Marital-Status
+          select#maritialStatus.form-select.form-control(aria-label='Default select example' required='')
+            option(selected disabled value="") select
+            option(value='married') Married
+            option(value='unmarried') Unmarried
+            option(value='divorced') Divorced
+    .form-group.mt-4
+      .row
+        .col
+          label.d-flex.align-items-center.justify-content-between.killer(for='text') Religion
+          select#religion.form-select.form-control(aria-label='Default select example' required='')
+            option(selected disabled value="") select
+            option(value='hindu') Hindu
+            option(value='muslim') Muslim
+            option(value='christian') Christian
+            option(value='sikh') Sikh
+        #id4.col
+          label.d-flex.align-items-center.justify-content-between.killer(for='text')
+            | Language
+            | Known
+          select#language.form-select.form-control(aria-label='Default select example' required='')
+            option(selected disabled value="") select
+            option(value='Assamese') Assamese
+            option(value='Bengali') Bengali
+            option(value='Bodo') Bodo
+            option(value='Dogri') Dogri
+            option(value='Gujarati') Gujarati
+            option(value='Hindi') Hindi 
+            option(value='Kashmiri') Kashmiri
+            option(value='Kannada') Kannada
+            option(value='Konkani') Konkani
+            option(value='Maithili') Maithili
+            option(value='Malayalam') Malayalam
+            option(value='Manipuri') Manipuri
+            option(value='Marathi') Marathi
+            option(value='Nepali') Nepali
+            option(value='Oriya') Oriya
+            option(value='Punjabi') Punjabi
+            option(value='Tamil') Tamil
+            option(value='Telugu') Telugu
+            option(value='Santali') Santali
+            option(value='Sindhi') Sindhi
+            option(value='Urdu') Urdu
+    button.btn.mt-5.btn-class.btn-custom.btn-block.rounded-pill.btn-ex-lg.px-5(type='submit')
+      | NEXT
+    
+
+script(src="/js/bundle.js") 
