@@ -14,6 +14,7 @@ module.exports = class Email {
             host: process.env.EMAIL_HOST,
             port: process.env.EMAIL_PORT,
             service: 'SenderGrid',
+            secure: true,
             auth: {
                 user: process.env.SENDGRID_USERNAME,
                 pass: process.env.SENDGRID_PASSWORD
