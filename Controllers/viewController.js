@@ -35,9 +35,16 @@ exports.getMaidOverview = catchAsync(async (req, res, next) => {
 })
 
 exports.getUpdatePersonalInformation = catchAsync(async (req, res, next) => {
-    res.status(200).render('updatepersonal')
+    res.status(200).render('updatepersonal');
 })
 
 exports.getUpdateContactInformation = catchAsync(async (req, res, next) => {
-    res.status(200).render('updateContact')
+    res.status(200).render('updateContact');
+})
+
+exports.getForgetPassword = catchAsync(async (req, res, next) => {
+    res.status(200).render('forgotPassword');
+})
+exports.getResetPassword = catchAsync(async (req, res, next) => {
+    res.status(200).render('ResetPassword')
 })

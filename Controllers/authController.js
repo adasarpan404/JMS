@@ -131,29 +131,18 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     if (!user) {
         return next(new AppError('There is no user associated with this email', 404))
     }
-    const resetToken = user.createPasswordResetToken();
+    const OTP = user.createPasswordResetToken();
     await user.save({ validateBeforeSave: false });
-
-    const resetUrl = `${req.protocol}://${req.get(
-        'host'
-    )}/api/v1/users/resetPassword/${resetToken}`;
-
-    const message = `you forgot your password? submit a patch request with a new password and password confirm ${resetUrl}. If you don't want to change your password, please ignore this email `;
     try {
-        await sendEmail({
-            email: user.email,
-            subject: 'Your password reset (Valid for 10 min)',
-            message,
-
-        });
+        await new Email(user, OTP).sendPasswordReset();
         res.status(200).json({
             status: 'success',
-            message: 'token sent to mail'
+            message: 'OTP sent to mail'
         })
     }
     catch (err) {
-        user.passwordResetToken = undefined,
-            user.passwordResetExpires = undefined,
+        user.OTP = undefined,
+            user.OTPExpires = undefined,
             await user.save({ validateBeforeSave: false })
 
         return next(
@@ -164,10 +153,9 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 })
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
-    const hashedToken = crytpo.createHash('sha256').update(req.params.token).digest('hex');
     const user = await User.findOne({
-        passwordResetToken: hashedToken,
-        passwordResetExpires: { $gte: Date.now() },
+        OTP: req.body.OTP,
+        OTPExpires: { $gte: Date.now() },
     });
     if (!user) {
         return next(new AppError('token is invalid or expired', 400))
@@ -176,7 +164,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     user.passwordConfirm = req.body.passwordConfirm;
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
-    await user.save();
+    await user.save({ validateBeforeSave: false });
     createSendToken(user, 200, res);
 })
 
@@ -191,5 +179,6 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     user.passwordConfirm = req.body.passwordConfirm;
     await user.save();
     createSendToken(user, 200, res);
+
 
 })

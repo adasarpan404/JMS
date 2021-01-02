@@ -3,10 +3,10 @@ const pug = require('pug')
 const htmlToText = require('html-to-text')
 
 module.exports = class Email {
-    constructor(user, url) {
+    constructor(user, content) {
         this.to = user.email;
         this.firstName = user.name.split(' ')[0];
-        this.url = url;
+        this.content = content;
         this.from = `${process.env.EMAIL_FROM}`;
     }
     newTransport() {
@@ -14,7 +14,8 @@ module.exports = class Email {
             host: process.env.EMAIL_HOST,
             port: process.env.EMAIL_PORT,
             service: 'SenderGrid',
-            secure: true,
+
+
             auth: {
                 user: process.env.SENDGRID_USERNAME,
                 pass: process.env.SENDGRID_PASSWORD
@@ -32,7 +33,7 @@ module.exports = class Email {
     async send(template, subject) {
         const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
             firstName: this.firstName,
-            url: this.url,
+            url: this.content,
             subject
         });
         const mailOptions = {
@@ -51,8 +52,8 @@ module.exports = class Email {
 
     async sendPasswordReset() {
         await this.send(
-            'password Reset',
-            'Your password reset token (valid for only minutes'
+            'passwordReset',
+            'Your OTP (valid for only 4 minutes)'
         )
     }
 

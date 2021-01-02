@@ -40,7 +40,9 @@ const userSchema = new mongoose.Schema({
     },
     phonenumber: {
         type: Number,
-        required: [true, 'You have to enter phone number']
+        required: [true, 'You have to enter phone number'],
+        unique: true,
+
     },
     city: {
         type: String,
@@ -51,8 +53,8 @@ const userSchema = new mongoose.Schema({
         default: 0,
     },
     passwordChangeAt: Date,
-    passwordResetToken: String,
-    PasswordResetExpires: Date,
+    OTP: String,
+    OTPExpires: Date,
     active: {
         type: Boolean,
         default: true,
@@ -98,11 +100,14 @@ userSchema.methods.changePasswordAfter = function (JWTtimeStamp) {
 }
 
 userSchema.methods.createPasswordResetToken = function () {
-    const resetToken = crypto.randomBytes(32).toString('hex');
-    this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
-    console.log({ resetToken }, this.passwordResetToken)
+    let OTP = Math.floor(100000 + Math.random() * 900000);
+    const OTPString = OTP.toString();
 
-    return resetToken;
+    this.OTP = OTPString
+    this.OTPExpires = Date.now() + 4 * 60 * 1000;
+    console.log({ OTPString }, this.OTP)
+
+    return OTP;
 }
 const User = mongoose.model('User', userSchema);
 
