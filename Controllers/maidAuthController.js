@@ -3,7 +3,8 @@ const { promisify } = require('util')
 const AppError = require('./../Utils/appError')
 const catchAsync = require('../Utils/catchAsync')
 const Maid = require('./../Model/maidModel')
-
+const Email = require('../Utils/email')
+const crypto = require('crypto')
 const signToken = id => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_In });
 };
@@ -36,6 +37,8 @@ exports.signUp = catchAsync(async (req, res, next) => {
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm
     });
+    const url = `${req.protocol}://${req.get('host')}/`;
+    await new Email(newUser, url).sendWelcome();
 
     createSendToken(newUser, 201, res);
 });
@@ -107,23 +110,19 @@ exports.logout = catchAsync(async (req, res, next) => {
     res.status(200).json({ status: 'success' })
 })
 exports.forgotPassword = catchAsync(async (req, res, next) => {
-    const user = await Maid.findOne({ email: req.body.email });
+    console.log(req.body)
+    const user = await Maid.findOne({ email: req.body.email })
     if (!user) {
-        return next(new AppError('There is no Maid associated with these email', 404))
+        return next(new AppError('There is no Maid associated with these email', 400))
     }
-    const resetToken = user.createPasswordResetToken();
+    const OTP = user.createPasswordResetToken();
     await user.save({ validateBeforeSave: false });
-    const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/users/resetPassword/${resetToken}`;
-    const message = `you forgot your password? submit a patch request with a new password and password confirm ${resetUrl}.If you don't want to change your password, please ignore this email`;
+
     try {
-        await sendEmail({
-            email: user.email,
-            subject: 'Your password reset (Valid for 10 min )',
-            message,
-        });
+        await new Email(user, OTP).sendPasswordReset();
         res.status(200).json({
             status: 'success',
-            message: 'token sent to mail'
+            message: 'OTP sent to mail'
         })
     }
     catch (err) {
@@ -136,21 +135,21 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 })
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
-    const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
-    const user = await User.findOne({
-        passwordResetToken: hashedToken,
-        passwordResetExpires: { $gte: Date.now() },
+    const hashedToken = crypto.createHash('sha256').update(req.body.OTP).digest('hex');
+    const user = await Maid.findOne({
+        OTP: hashedToken,
+        OTPExpires: { $gte: Date.now() },
     });
 
     if (!user) {
-        return next(new AppError('token is invalid or expired', 400))
+        return next(new AppError('OTP is invalid or expired', 400))
     }
 
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
-    user.passwordResetToken = undefined;
-    user.passwordResetExpires = undefined;
-    await user.save();
+    user.OTP = undefined;
+    user.OTPExpires = undefined;
+    await user.save({ validateBeforeSave: false });
     createSendToken(user, 200, res);
 })
 

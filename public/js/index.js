@@ -2,7 +2,7 @@
 import '@babel/polyfill';
 import { login, signup, logout, maidLogin, maidSignUp, maidLogout } from './login';
 import { maidUpdatePersonalInformation, maidUpdateContactInformation } from './updateInformation';
-import { forgotPassword, resetPassword } from './forgotReset'
+import { forgotPassword, resetPassword, forgotMaidPassword, resetMaidPassword } from './forgotReset'
 const loginForm = document.querySelector('.login-form');
 const signForm = document.querySelector('.signup-form');
 const logOut = document.getElementById('logout');
@@ -12,7 +12,9 @@ const MaidLogout = document.querySelector('.maidLogout');
 const personalForm = document.querySelector('.personal-form');
 const contactForm = document.querySelector('.contact-form');
 const forgotform = document.querySelector('.forgot-form');
-const resetform = document.querySelector('.Reset-form')
+const resetform = document.querySelector('.Reset-form');
+const forgotMaidform = document.querySelector('.forgot-maid-form');
+const resetMaidform = document.querySelector('.Reset-maid-form')
 if (loginForm) {
     loginForm.addEventListener('submit', e => {
         e.preventDefault();
@@ -118,3 +120,22 @@ if (resetform) {
     })
 }
 
+if (forgotMaidform) {
+    forgotMaidform.addEventListener('submit', e => {
+
+        e.preventDefault();
+        var Email = document.getElementById('email').value;
+        forgotMaidPassword(Email);
+    })
+}
+
+if (resetMaidform) {
+    resetMaidform.addEventListener('submit', e => {
+        e.preventDefault();
+        var OTP = document.getElementById('inputnumber').value;
+        var password = document.getElementById('inputpassword1').value;
+        var passwordConfirm = document.getElementById('inputpassword2').value;
+        resetMaidPassword(OTP, password, passwordConfirm)
+
+    })
+}

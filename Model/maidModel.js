@@ -107,8 +107,8 @@ const maidSchema = new mongoose.Schema({
     },
 
     passwordChangeAt: Date,
-    passwordResetToken: String,
-    PasswordResetExpires: Date,
+    OTP: String,
+    OTPExpires: Date,
     active: {
         type: Boolean,
         default: true,
@@ -156,11 +156,13 @@ maidSchema.methods.changePasswordAfter = function (JWTtimeStamp) {
     return false;
 }
 maidSchema.methods.createPasswordResetToken = function () {
-    const resetToken = crypto.randomBytes(32).toString('hex');
-    this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
-    console.log({ resetToken }, this.passwordResetToken);
+    let OTP = Math.floor(1000000 + Math.random() * 9000000)
+    const OTPString = OTP.toString();
+    this.OTP = crypto.createHash('sha256').update(OTPString).digest('hex');
+    this.OTPExpires = Date.now() + 10 * 60 * 1000;
+    console.log({ OTPString }, this.OTP);
 
-    return resetToken;
+    return OTPString;
 }
 const Maid = mongoose.model('Maid', maidSchema);
 

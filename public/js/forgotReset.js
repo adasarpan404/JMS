@@ -44,3 +44,45 @@ export const resetPassword = async (Otp, password, passwordConfirm) => {
         showAlert('error', err.response.data.message);
     }
 }
+export const forgotMaidPassword = async (email) => {
+    try {
+        const res = await axios({
+            method: 'POST',
+            url: '/api/v1/maids/forgotPassword',
+            data: {
+                email
+            }
+        })
+        if (res.data.status === 'success') {
+            showAlert('success', res.data.message)
+            window.setTimeout(() => {
+                location.assign('/resetMaidPassword')
+            }, 1500);
+        }
+    } catch (err) {
+        showAlert('error', err.response.data.message)
+    }
+}
+export const resetMaidPassword = async (Otp, password, passwordConfirm) => {
+    var OTP = Otp.toString();
+    try {
+        const res = await axios({
+            method: 'POST',
+            url: '/api/v1/maids/resetPassword/',
+            data: {
+                OTP,
+                password,
+                passwordConfirm,
+            }
+        })
+        if (res.data.status === 'success') {
+            showAlert('success', 'password changed successfully');
+            window.setTimeout(() => {
+                location.assign('/maid-login')
+            }, 1500)
+        }
+    }
+    catch (err) {
+        showAlert('error', err.response.data.message);
+    }
+} 

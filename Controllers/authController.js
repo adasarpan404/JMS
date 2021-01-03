@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
+const { listen } = require('../app');
 const AppError = require('../Utils/appError');
 const catchAsync = require('../Utils/catchAsync')
 const User = require('./../Model/userModel')
@@ -141,8 +142,8 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
         })
     }
     catch (err) {
-        user.OTP = undefined,
-            user.OTPExpires = undefined,
+        user.OTP = undefined;
+        user.OTPExpires = undefined,
             await user.save({ validateBeforeSave: false })
 
         return next(
@@ -162,8 +163,8 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     }
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
-    user.passwordResetToken = undefined;
-    user.passwordResetExpires = undefined;
+    user.OTP = undefined;
+    user.OTPExpires = undefined;
     await user.save({ validateBeforeSave: false });
     createSendToken(user, 200, res);
 })

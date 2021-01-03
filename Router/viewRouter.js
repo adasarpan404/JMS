@@ -9,9 +9,11 @@ router.get('/signup', viewController.getsignupPage);
 router.get('/maid-login', viewController.getMaidLoginPage);
 router.get('/maid-signup', viewController.getMaidSignUpPage);
 router.get('/overview', authController.protect, viewController.getoverview);
-router.get('/maidOverview', maidAuthController.protect, viewController.getMaidOverview)
+router.get('/maidOverview', maidAuthController.protect, viewController.getMaidOverview);
 router.get('/updateInformation', maidAuthController.protect, viewController.getUpdatePersonalInformation);
 router.get('/contactInformation', maidAuthController.protect, viewController.getUpdateContactInformation);
-router.get('/forgotPassword', viewController.getForgetPassword)
-router.get('/resetPassword', viewController.getResetPassword)
+router.get('/forgotPassword', viewController.getForgetPassword);
+router.get('/resetPassword', viewController.getResetPassword);
+router.get('/forgotMaidPassword', viewController.getForgotMaidPassword);
+router.get('/resetMaidPassword', viewController.getResetMaidPassword);
 module.exports = router;

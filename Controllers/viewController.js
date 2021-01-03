@@ -48,3 +48,10 @@ exports.getForgetPassword = catchAsync(async (req, res, next) => {
 exports.getResetPassword = catchAsync(async (req, res, next) => {
     res.status(200).render('ResetPassword')
 })
+exports.getForgotMaidPassword = catchAsync(async (req, res, next) => {
+    res.status(200).render('forgotMaidPassword')
+})
+
+exports.getResetMaidPassword = catchAsync(async (req, res, next) => {
+    res.status(200).render('resetMaidPassword')
+})

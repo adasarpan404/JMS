@@ -8,7 +8,9 @@ const reviewRouter = require('./../Router/reviewRouter')
 const router = express.Router();
 router.post('/signUp', maidAuth.signUp);
 router.post('/login', maidAuth.login);
-router.get('/logout', maidAuth.logout)
+router.get('/logout', maidAuth.logout);
+router.post('/forgotPassword', maidAuth.forgotPassword);
+router.post('/resetPassword', maidAuth.resetPassword);
 
 router.get('/', authController.protect, maidController.getAllMaid);
 router.post('/updatePersonalInformation', maidAuth.protect, maidAuth.updatePersonalInformation);
