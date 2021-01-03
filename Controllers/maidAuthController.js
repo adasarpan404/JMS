@@ -6,7 +6,7 @@ const Maid = require('./../Model/maidModel')
 const Email = require('../Utils/email')
 const crypto = require('crypto')
 const signToken = id => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_In });
+    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
 };
 const createSendToken = (user, statusCode, res) => {
     const token = signToken(user._id);
@@ -38,6 +38,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
         passwordConfirm: req.body.passwordConfirm
     });
     const url = `${req.protocol}://${req.get('host')}/`;
+    console.log(url)
     await new Email(newUser, url).sendWelcome();
 
     createSendToken(newUser, 201, res);
