@@ -55,3 +55,19 @@ exports.getForgotMaidPassword = catchAsync(async (req, res, next) => {
 exports.getResetMaidPassword = catchAsync(async (req, res, next) => {
     res.status(200).render('resetMaidPassword')
 })
+
+exports.getVerifyOTP = catchAsync(async (req, res, next) => {
+    const email = req.user.email;
+    res.status(200).render('verifyOTP', {
+        email,
+    })
+})
+
+exports.getVerifyMaidOTP = catchAsync(async (req, res, next) => {
+    const email = req.user.email;
+    res.status(200).render('verifyMaidOTP', {
+        email,
+    })
+}
+
+)

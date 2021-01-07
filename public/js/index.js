@@ -2,7 +2,8 @@
 import '@babel/polyfill';
 import { login, signup, logout, maidLogin, maidSignUp, maidLogout } from './login';
 import { maidUpdatePersonalInformation, maidUpdateContactInformation } from './updateInformation';
-import { forgotPassword, resetPassword, forgotMaidPassword, resetMaidPassword } from './forgotReset'
+import { forgotPassword, resetPassword, forgotMaidPassword, resetMaidPassword } from './forgotReset';
+import { verifyOTP, resendTo, verifyOTPMaid, resendToMaid } from './verify';
 const loginForm = document.querySelector('.login-form');
 const signForm = document.querySelector('.signup-form');
 const logOut = document.getElementById('logout');
@@ -14,7 +15,11 @@ const contactForm = document.querySelector('.contact-form');
 const forgotform = document.querySelector('.forgot-form');
 const resetform = document.querySelector('.Reset-form');
 const forgotMaidform = document.querySelector('.forgot-maid-form');
-const resetMaidform = document.querySelector('.Reset-maid-form')
+const resetMaidform = document.querySelector('.Reset-maid-form');
+const verifyform = document.querySelector('.verify-form');
+const resendCode = document.getElementById('resendCode');
+const verifyMaid = document.querySelector('.verify-maid-form')
+const resendCodeM = document.getElementById('resendCodeMaid')
 if (loginForm) {
     loginForm.addEventListener('submit', e => {
         e.preventDefault();
@@ -138,4 +143,26 @@ if (resetMaidform) {
         resetMaidPassword(OTP, password, passwordConfirm)
 
     })
+}
+
+if (verifyform) {
+    verifyform.addEventListener('submit', e => {
+        e.preventDefault();
+        var OTP = document.getElementById('inputnumber').value;
+        verifyOTP(OTP);
+    })
+}
+
+if (resendCode) {
+    resendCode.addEventListener('click', resendTo);
+}
+if (verifyMaid) {
+    verifyMaid.addEventListener('submit', e => {
+        e.preventDefault();
+        var OTP = document.getElementById('inputnumber').value;
+        verifyOTPMaid(OTP);
+    })
+}
+if (resendCodeM) {
+    resendCodeM.addEventListener('click', resendToMaid)
 }

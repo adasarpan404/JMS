@@ -8,8 +8,8 @@ router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 router.post('/forgotPassword', authController.forgotPassword);
 router.post('/resetPassword', authController.resetPassword);
-
-
+router.post('/verify', authController.verify)
+router.get('/resendOTP', authController.protect, authController.resendTo)
 
 router.use(authController.protect);
 

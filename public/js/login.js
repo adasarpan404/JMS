@@ -39,7 +39,7 @@ export const signup = async (name, email, phonenumber, password, passwordConfirm
         if (res.data.status === 'success') {
             showAlert('success', 'User created successfully ');
             window.setTimeout(() => {
-                location.assign('/overview')
+                location.assign('/verifyOTP')
             }, 1500);
         }
     }
@@ -54,7 +54,7 @@ export const logout = async () => {
             method: 'GET',
             url: '/api/v1/users/logout'
         });
-        if ((res.data.status = 'success')) location.assign('/');
+        if (res.data.status === 'success') location.assign('/');
     } catch (err) {
 
         showAlert('error', 'Error logging out! Try again.');
@@ -87,7 +87,7 @@ export const maidLogin = async (email, password) => {
         if (res.data.status === 'success') {
             showAlert('success', 'Login in with Maid Account is successful');
             window.setTimeout(() => {
-                location.assign('/maidOverview')
+                location.assign('/')
             }, 1500)
         }
     }
@@ -112,7 +112,7 @@ export const maidSignUp = async (name, email, phonenumber, password, passwordCon
         if (res.data.status === 'success') {
             showAlert('Sucess', 'Maid Created successfully');
             window.setTimeout(() => {
-                location.assign('/maidOverview')
+                location.assign('/verifyMaid')
             }, 1500)
         }
 

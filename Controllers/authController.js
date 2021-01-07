@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
-const { listen } = require('../app');
+const crypto = require('crypto')
+const Maid = require('../Model/maidModel');
 const AppError = require('../Utils/appError');
 const catchAsync = require('../Utils/catchAsync')
 const User = require('./../Model/userModel')
@@ -45,10 +46,47 @@ exports.signUp = catchAsync(async (req, res, next) => {
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm
     });
-    const url = `${req.protocol}://${req.get('host')}/`;
-    console.log(url);
-    await new Email(newUser, url).sendWelcome();
+
+    const OTP = newUser.createPasswordResetToken();
+    await newUser.save({ validateBeforeSave: false });
+
+    await new Email(newUser, OTP).sendWelcomeOTP();
     createSendToken(newUser, 201, res);
+
+})
+exports.verify = catchAsync(async (req, res, next) => {
+
+    const user = await User.findOne({
+        OTP: req.body.OTP,
+        OTPExpires: { $gte: Date.now() },
+    })
+    if (!user) {
+        return next(new AppError('OTP is invalid or expired', 400))
+    }
+    user.verified = true;
+    await user.save({ validateBeforeSave: false });
+    const url = `${req.protocol}://${req.get('host')}/`;
+    await new Email(user, url).sendWelcome();
+    createSendToken(user, 200, res);
+
+
+})
+
+exports.resendTo = catchAsync(async (req, res, next) => {
+    const user = await User.find({
+        email: req.user.email,
+    })
+    if (!user) {
+        return next(new AppError('there is no user associated with these email', 400))
+    }
+    const OTP = user.createPasswordResetToken();
+    await user.save({ validateBeforeSave: false });
+    await new Email(newUser, OTP).sendWelcomeOTP();
+    res.status(200).json({
+        status: 'success',
+        message: 'email send successfully'
+    })
+
 
 })
 

@@ -16,4 +16,6 @@ router.get('/forgotPassword', viewController.getForgetPassword);
 router.get('/resetPassword', viewController.getResetPassword);
 router.get('/forgotMaidPassword', viewController.getForgotMaidPassword);
 router.get('/resetMaidPassword', viewController.getResetMaidPassword);
+router.get('/verifyOTP', maidAuthController.protect, viewController.getVerifyOTP)
+router.get('/verifyMaid', maidAuthController.protect, viewController.getVerifyMaidOTP)
 module.exports = router;

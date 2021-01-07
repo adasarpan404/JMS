@@ -11,6 +11,8 @@ router.post('/login', maidAuth.login);
 router.get('/logout', maidAuth.logout);
 router.post('/forgotPassword', maidAuth.forgotPassword);
 router.post('/resetPassword', maidAuth.resetPassword);
+router.post('/verify', maidAuth.verify);
+router.get('/resendOTP', maidAuth.protect, maidAuth.resendTo)
 
 router.get('/', authController.protect, maidController.getAllMaid);
 router.post('/updatePersonalInformation', maidAuth.protect, maidAuth.updatePersonalInformation);

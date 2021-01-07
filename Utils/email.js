@@ -55,7 +55,13 @@ module.exports = class Email {
             'passwordReset',
             'Your OTP (valid for only 4 minutes)'
         )
-    }
 
+    }
+    async sendWelcomeOTP() {
+        await this.send(
+            'welcomeOTP',
+            'your OTP (valid for only 4 minutes)'
+        )
+    }
 
 }
