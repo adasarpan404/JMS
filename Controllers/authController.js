@@ -49,10 +49,8 @@ exports.signUp = catchAsync(async (req, res, next) => {
 
     const OTP = newUser.createPasswordResetToken();
     await newUser.save({ validateBeforeSave: false });
-
-    await new Email(newUser, OTP).sendWelcomeOTP();
     createSendToken(newUser, 201, res);
-
+    await new Email(newUser, OTP).sendWelcomeOTP();
 })
 exports.verify = catchAsync(async (req, res, next) => {
 
@@ -65,6 +63,7 @@ exports.verify = catchAsync(async (req, res, next) => {
     }
     user.verified = true;
     await user.save({ validateBeforeSave: false });
+    createSendToken(user, 200, res);
     const url = `${req.protocol}://${req.get('host')}/`;
     await new Email(user, url).sendWelcome();
     createSendToken(user, 200, res);
@@ -81,11 +80,12 @@ exports.resendTo = catchAsync(async (req, res, next) => {
     }
     const OTP = user.createPasswordResetToken();
     await user.save({ validateBeforeSave: false });
-    await new Email(newUser, OTP).sendWelcomeOTP();
+
     res.status(200).json({
         status: 'success',
         message: 'email send successfully'
     })
+    await new Email(newUser, OTP).sendWelcomeOTP();
 
 
 })
