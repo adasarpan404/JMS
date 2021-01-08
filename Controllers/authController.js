@@ -66,7 +66,6 @@ exports.verify = catchAsync(async (req, res, next) => {
     createSendToken(user, 200, res);
     const url = `${req.protocol}://${req.get('host')}/`;
     await new Email(user, url).sendWelcome();
-    createSendToken(user, 200, res);
 
 
 })
