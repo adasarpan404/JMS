@@ -106,12 +106,10 @@ userSchema.methods.changePasswordAfter = function (JWTtimeStamp) {
 userSchema.methods.createPasswordResetToken = function () {
     let OTP = Math.floor(100000 + Math.random() * 900000);
     const OTPString = OTP.toString();
-
-    this.OTP = OTPString
+    this.OTP = crypto.createHash('sha256').update(OTPString).digest('hex');
+    this.OTP = OTPString;
     this.OTPExpires = Date.now() + 4 * 60 * 1000;
-    console.log({ OTPString }, this.OTP)
-
-    return OTP;
+    return OTPString;
 }
 const User = mongoose.model('User', userSchema);
 

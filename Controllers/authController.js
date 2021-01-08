@@ -53,9 +53,9 @@ exports.signUp = catchAsync(async (req, res, next) => {
     await new Email(newUser, OTP).sendWelcomeOTP();
 })
 exports.verify = catchAsync(async (req, res, next) => {
-
+    const hashedToken = crypto.createHash('sha256').update(req.body.OTP).digest('hex');
     const user = await User.findOne({
-        OTP: req.body.OTP,
+        OTP: hashedToken,
         OTPExpires: { $gte: Date.now() },
     })
     if (!user) {
@@ -66,8 +66,6 @@ exports.verify = catchAsync(async (req, res, next) => {
     createSendToken(user, 200, res);
     const url = `${req.protocol}://${req.get('host')}/`;
     await new Email(user, url).sendWelcome();
-
-
 })
 
 exports.resendTo = catchAsync(async (req, res, next) => {
@@ -191,8 +189,9 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
 })
 
 exports.resetPassword = catchAsync(async (req, res, next) => {
+    const hashedToken = crypto.createHash('sha256').update(req.body.OTP).digest('hex');
     const user = await User.findOne({
-        OTP: req.body.OTP,
+        OTP: hashedToken,
         OTPExpires: { $gte: Date.now() },
     });
     if (!user) {

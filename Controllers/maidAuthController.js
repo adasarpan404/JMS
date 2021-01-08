@@ -140,7 +140,6 @@ exports.logout = catchAsync(async (req, res, next) => {
     res.status(200).json({ status: 'success' })
 })
 exports.forgotPassword = catchAsync(async (req, res, next) => {
-    console.log(req.body)
     const user = await Maid.findOne({ email: req.body.email })
     if (!user) {
         return next(new AppError('There is no Maid associated with these email', 400))
