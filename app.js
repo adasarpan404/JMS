@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const xss = require('xss-clean')
 const path = require('path')
+const compression = require('compression');
 const mongoSantize = require('express-mongo-sanitize')
 const helmet = require('helmet')
 const viewRouter = require('./Router/viewRouter')
@@ -25,9 +26,10 @@ app.use(mongoSantize());
 
 
 
-
 app.use(express.json());
 app.use(cookieParser())
+app.use(compression());
+
 app.use('/', viewRouter)
 
 app.use('/api/v1/users', userRouter);
