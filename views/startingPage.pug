@@ -1,47 +1,404 @@
 doctype html
 head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Maid
-  link(rel='preconnect' href='https://fonts.gstatic.com')
-  link(href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet')
-  link(rel='preconnect' href='https://fonts.gstatic.com')
-  link(href='https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap' rel='stylesheet')
-  link(rel='preconnect' href='https://fonts.gstatic.com')
-  link(href='https://fonts.googleapis.com/css2?family=Heebo&display=swap' rel='stylesheet')
-  // css link
-  link(rel='stylesheet' href='/CSS/maid.css')
-section
-  .imgbx
-    a(href='#') AHlogo
-    h2
-      | Hire The Experience 
-      span
-        u MAID
-      |                 For Your Home.
-    p.p1
-      | Press on the option 
-      u  Hire a Maid 
-      |  and hire for your
-      |                 household chores.
-    p.p2
-      | Press on the option 
-      u Maid Register
-      |  and add your
-      |                 profile so that you can find work in many homes in the coming
-      |                 times.
-    img(src='/Image/photoshop.webp' alt='')
-  .contentbx
-    img.cart1(src='/Image/cleaning-cart.png' alt='')
-    .heading2
-      h3 Welcome
-      p
-        | Thousands of maid are registered and hired for
-        | Household chores.
-    .button
-      a.button1(href='/login') Hire a Maid
-      a.button2(href='/maid-login') Maid Register
-footer
-  h5 Having troubles?
-  u
-    a.help(href='#')  Get help 
+  // Required meta tags
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  // Bootstrap CSS
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
+  link(rel='stylesheet' href='/CSS/index.css')
+  title Main screen
+  // animation
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css')
+  // swipercdn
+  link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.css')
+  link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css')
+header.title
+  .container-fluid.p-0
+    nav.navbar.navbar-expand-lg.navbar-light
+      a.navbar-brand(href='#')  the-maid 
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarTogglerDemo02' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarTogglerDemo02.collapse.navbar-collapse
+        ul.navbar-nav.ms-auto.animate__animated.animate__lightSpeedInRight(class='animate__delay-0.9s')
+          li.nav-item
+            a.nav-link.active(aria-current='page' href='#title') Home
+          li.nav-item
+            a.nav-link(aria-current='page' href='#About') About
+          li.nav-item
+            a.nav-link(aria-current='page' href='#') Services
+        .share.ms-auto
+          span.content1  contact 
+          a(href='#')
+            i.fab.fa-linkedin
+          a(href='#')
+            i.fab.fa-twitter
+          a(href='#')
+            i.fab.fa-instagram
+          a(href='#')
+            i.fab.fa-facebook
+    #carouselExampleControls.carousel.slide(data-bs-ride='carousel' data-bs-interval='5000')
+      .carousel-inner(role='listbox')
+        .carousel-item.active(style='\
+        background-image: url(/Image/m.webp);\
+        background-repeat: no-repeat;\
+        background-attachment: fixed;\
+        background-size: cover;\
+        background-position: center;\
+        ')
+          .carousel-caption
+            .site-content
+              .d-flex.justify-content-center
+                .d-flex.flex-column
+                  h1.animate__animated.animate__lightSpeedInRight.animate__slow-2s
+                    | Maid,for your household chores
+                  p.animate__animated.animate__lightSpeedInLeft
+                    | A maid is a household worker who cleans and performs
+                    | various other tasks.
+                  .d-flex.flex-row.animate__animated.animate__backInUp
+                    button#login.btn.btn-class.btn-custom.btn-block.btn-ex-lg
+                      | Hire Maid
+                    button#maid-login.btn.ms-4.btn-class.btn-custom1.btn-block.btn-ex-lg
+                      | Maid Registration
+        .carousel-item(style='\
+        background-image: url(/Image/Web1920.webp);\
+        background-repeat: no-repeat;\
+        background-attachment: fixed;\
+        background-size: cover;\
+        background-position: center;\
+        ')
+          .carousel-caption
+            .site-content
+              .d-flex.justify-content-center
+                .d-flex.flex-column
+                  h1.animate__animated.animate__lightSpeedInRight(class='animate__delay-0.9s')
+                    | Maid,for your household chores
+                  p.animate__animated.animate__lightSpeedInLeft(class='animate__delay-0.9s')
+                    | A maid is a household worker who cleans and performs
+                    | various other tasks.
+                  .d-flex.flex-row.animate__animated.animate__backInUp(class='animate__delay-0.9s')
+                    button#login.btn.btn-class.btn-custom.btn-block.btn-ex-lg
+                      | Hire Maid
+                    button#maid-login.btn.ms-4.btn-class.btn-custom1.btn-block.btn-ex-lg
+                      | Maid Registration
+        .carousel-item(style='\
+        background-image: url(/Image/m2.webp);\
+        background-repeat: no-repeat;\
+        background-attachment: fixed;\
+        background-size: cover;\
+        background-position: center;\
+        ')
+          .carousel-caption
+            .site-content
+              .d-flex.justify-content-center
+                .d-flex.flex-column
+                  h1.animate__animated.animate__lightSpeedInRight(class='animate__delay-0.9s')
+                    | Maid,for your household chores
+                  p.animate__animated.animate__lightSpeedInLeft(class='animate__delay-0.9s')
+                    | A maid is a household worker who cleans and performs
+                    | various other tasks.
+                  .d-flex.flex-row.animate__animated.animate__backInUp(class='animate__delay-0.9s')
+                    button#login.btn.btn-class.btn-custom.btn-block.btn-ex-lg
+                      | Hire Maid
+                    button#maid-login.btn.ms-4.btn-class.btn-custom1.btn-block.btn-ex-lg
+                      | Maid Registration
+section#About
+  h2.maidservices What we offer?
+  .container
+    .row
+      .col-lg-3
+        .swiper-container
+          .swiper-wrapper
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+          .swiper-pagination
+      .col-lg-3
+        .swiper-container
+          .swiper-wrapper
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m2.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m2.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m2.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m2.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+          .swiper-pagination
+      .col-lg-3
+        .swiper-container
+          .swiper-wrapper
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/Web1920.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/Web1920.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/Web1920.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/Web1920.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+          .swiper-pagination
+      .col-lg-3
+        .swiper-container
+          .swiper-wrapper
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+            .swiper-slide
+              .card
+                img.card-img-top(src='/Image/m.webp' alt='...')
+                .card-body
+                  h5.card-title.text-center House maid
+                  small
+                    | Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+                  | &gt;
+          .swiper-pagination
+section#useing.bg-dark
+  main
+    h2.oursecurity Why Use Our Website
+    .row
+      .col-lg-4.securityicon
+        i.fas.fa-shield-alt.fa-3x
+        h3 Safe &amp; Reliable
+        p So easy to use, even your dog could do it.
+      .col-lg-4.securityicon
+        i.fas.fa-stopwatch.fa-3x
+        h3 Quick &amp; Easy
+        p We have all the dogs, the greatest dogs.
+      .col-lg-4.securityicon
+        i.fas.fa-trophy.fa-3x
+        h3 High Quality
+        p Find the love of your dog&apos;s life or your money back.
+    .row
+      .col-lg-4.securityicon
+        i.fas.fa-male.fa-3x
+        i.fas.fa-female.fa-3x
+        h3 Mens &amp; Women
+        p So easy to use, even your dog could do it.
+      .col-lg-4.securityicon
+        i.fas.fa-bullseye.fa-3x.love
+        h3 Elite Clientele
+        p We have all the dogs, the greatest dogs.
+      .col-lg-4.securityicon
+        i.fas.fa-heart.fa-3x.love
+        h3 Guaranteed to work.
+        p Find the love of your dog&apos;s life or your money back.
+section.our.team
+  h2.team2.text-center.mt-5 The Executive Team
+  .container1.mt-5
+    .row.justify-content-center
+      .col-md-4.col-12.teamborder
+        .ourteam1
+          .pic
+            img(src='/Image/IMG-20190317-WA0005.webp' alt='')
+          h2.arpan Hemant Varshney
+          span.post
+            | Co-Founder and CEO
+            br
+            ul HireAMaid
+          ul.socialsites
+            li
+              a.fab.fa-linkedin(href='#')
+            li
+              a.fab.fa-instagram(href='#')
+            li
+              a.fab.fa-facebook(href='#')
+            li
+              a.fab.fa-twitter(href='#')
+      .col-md-4.col-12.teamborder
+        .ourteam1
+          .pic
+            img(src='/Image/arpandas.webp' alt='')
+          h2.arpan Arpan Das
+          span.post
+            | Co-Founder and CSO
+            br
+            ul HireAMaid
+          ul.socialsites
+            li
+              a.fab.fa-linkedin(href='#')
+            li
+              a.fab.fa-instagram(href='#')
+            li
+              a.fab.fa-facebook(href='#')
+            li
+              a.fab.fa-twitter(href='#')
+section.endpoint
+  footer.bg-dark.text-white.mt-5
+    .row
+      .col-md-3.col-12
+        h4.footername the-maid
+        p.footerp
+          | Lorem ipsum dolor 
+          br
+          |  sit amet consectetur,
+          br
+          |  adipisicing elit. Eligendi, 
+          br
+          |                         aliquam
+      .col-md-2.mx-auto.mb-4.footerleft
+        h4.footername1.text-left Helpful links
+        ul.list-unstyled.footerul.text-left
+          li.my-2
+            a(href='#') Support
+          li.my-2
+            a(href='#') Terms &amp; condition
+          li.my-2
+            a(href='#') Privacy &amp; policy
+      .col-md-2.mx-auto.mb-4.footerleft
+        h4.footername2.text-left Information
+        ul.list-unstyled.footerul.text-left
+          li.my-2
+            a(href='#') Home
+          li.my-2
+            a(href='#') What we offer
+          li.my-2
+            a(href='#') Services
+          li.my-2
+            a(href='#') Our Team
+      .col-md-2.mx-auto.mb-4.footerleft
+        h4.footername2.text-left Address
+        ul.list-unstyled.footerul.text-left
+          li.my-2
+            a(href='mailto:webmaster@example.com')
+              | Visit us at:
+              br
+              |                                 Example.com
+              br
+              |                                 Box 564, Disneyland
+              br
+              |                                 USA
+      .col-md-2.mx-auto.mb-4.footerleft
+        h4.footername2.text-left Contact
+        ul.list-unstyled.footerul.text-left
+          li.my-2
+            a(href='mailto:webmaster@example.com') maidworld234@gmail.com
+          li.my-2
+            a(href='tel:+91 7668798433') +91 7668798433
+          li.my-2
+            a(href='tel:+91 7534927815') +91 7534927815
+    ul.list-unstyled.d-flex.footersocialicon.justify-content-center
+      li
+        a.fab.fa-linkedin.fa-2x(href='#')
+      li
+        a.fab.fa-instagram.ms-5.fa-2x(href='#')
+      li
+        a.fab.fa-facebook.ms-5.fa-2x(href='#')
+      li
+        a.fab.fa-twitter.ms-5.fa-2x(href='#')
+script(src="/js/bundle.js")      
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js' integrity='sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW' crossorigin='anonymous')
+// swiper script
+script(src='https://unpkg.com/swiper/swiper-bundle.js')
+script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
+script.
+  var swiper = new Swiper('.swiper-container', {
+  effect: 'cube',
+  grabCursor: true,
+  cubeEffect: {
+  shadow: true,
+  slideShadows: true,
+  shadowOffset: 20,
+  shadowScale: 0.94,
+  },
+  pagination: {
+  el: '.swiper-pagination',
+  },
+  });

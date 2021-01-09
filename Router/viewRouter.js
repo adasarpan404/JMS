@@ -3,7 +3,11 @@ const viewController = require('../Controllers/viewController')
 const authController = require('../Controllers/authController')
 const maidAuthController = require('../Controllers/maidAuthController')
 const router = express.Router();
-router.get('/', authController.isLoggedIn, maidAuthController.isLoggedIn, viewController.getStart);
+const path = require('path')
+router.get('/', function (req, res, next) {
+    res.setHeader("Content-Security-Policy", "script-src-elm 'self' https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js");
+    next();
+}, authController.isLoggedIn, maidAuthController.isLoggedIn, viewController.getStart);
 router.get('/login', viewController.getLoginPage);
 router.get('/signup', viewController.getsignupPage);
 router.get('/maid-login', viewController.getMaidLoginPage);

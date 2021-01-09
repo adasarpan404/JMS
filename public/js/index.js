@@ -4,6 +4,8 @@ import { login, signup, logout, maidLogin, maidSignUp, maidLogout } from './logi
 import { maidUpdatePersonalInformation, maidUpdateContactInformation } from './updateInformation';
 import { forgotPassword, resetPassword, forgotMaidPassword, resetMaidPassword } from './forgotReset';
 import { verifyOTP, resendTo, verifyOTPMaid, resendToMaid } from './verify';
+const Login__l = document.getElementById('login')
+const maidlogin = document.getElementById('maid-login')
 const loginForm = document.querySelector('.login-form');
 const signForm = document.querySelector('.signup-form');
 const logOut = document.getElementById('logout');
@@ -165,4 +167,17 @@ if (verifyMaid) {
 }
 if (resendCodeM) {
     resendCodeM.addEventListener('click', resendToMaid)
+}
+
+if (Login__l) {
+    Login__l.addEventListener('click', e => {
+        e.preventDefault();
+        location.assign('/login')
+    })
+}
+if (maidlogin) {
+    maidlogin.addEventListener('click', e => {
+        e.preventDefault();
+        location.assign('/maid-login')
+    })
 }

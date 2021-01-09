@@ -4,6 +4,7 @@ const catchAsync = require('../Utils/catchAsync');
 
 
 exports.getStart = catchAsync(async (req, res, next) => {
+
     res.status(200).render('startingPage');
 })
 exports.getLoginPage = catchAsync(async (req, res, next) => {
