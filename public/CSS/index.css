@@ -67,8 +67,10 @@ margin-left: 27%;
 margin-top: 5%;
 margin-bottom: 8%;
 border-radius: 5px;
-background-color: rgba(255, 255, 255, 0.329);
-transition: 1s ease-in;
+background-color: rgba(128, 81, 81, 0.329);
+transition: 0.5s ease-in;
+border-top: 1px solid rgba(255, 255, 255, 0.664);
+border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
 .btn-custom1 {
 
@@ -81,7 +83,9 @@ margin-bottom: 8%;
 
 border-radius: 5px;
 background-color: rgba(255, 255, 255, 0.329);
-transition: 1s ease-in;
+transition: 0.5s ease-in;
+border-top: 1px solid rgba(255, 255, 255, 0.664);
+border-left: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 
@@ -248,6 +252,7 @@ color: white;
     margin:25px;
     box-shadow:  13px 13px 34px #d6d6d6,
              -13px -13px 34px #ffffff;
+    border-radius: 50px;
 }
 .card-body h5{
     font-size: 15px;
@@ -457,6 +462,9 @@ color: rgba(255, 255, 255, 0.541);
 .footersocialicon li a:nth-of-type(1) {
     transition-delay: 0s;
 }
+.row{
+    margin-right: 0;
+}
 
 
 
@@ -513,6 +521,9 @@ color: rgba(255, 255, 255, 0.541);
     .footerleft{
         text-align: center;
     }
+    .row{
+        margin-right: 0;
+    }
 }
 @media only screen and (max-width: 566px)
 {
@@ -568,6 +579,9 @@ color: rgba(255, 255, 255, 0.541);
     }
     .footerleft{
         text-align: center;
+    }
+    .row{
+        margin-right: 0;
     }
  
 }
