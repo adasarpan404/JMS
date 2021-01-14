@@ -137,7 +137,7 @@ maidSchema.pre('save', async function (next) {
 
 maidSchema.pre('save', function (next) {
     if (!this.isModified('password') || this.isNew) return next();
-    this.passwordChangedAt = Date.now() - 1000;
+    this.passwordChangeAt = Date.now() - 1000;
     next();
 })
 
@@ -150,7 +150,7 @@ maidSchema.methods.correctPassword = async function (candidatePassword, userPass
 }
 maidSchema.methods.changePasswordAfter = function (JWTtimeStamp) {
     if (this.passwordChangeAt) {
-        const changedTimestamp = parseInt(this.passwordChangedAt.getTime() / 1000, 10);
+        const changedTimestamp = parseInt(this.passwordChangeAt.getTime() / 1000, 10);
         return JWTtimeStamp < changedTimestamp;
     }
     return false;

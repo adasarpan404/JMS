@@ -5,7 +5,7 @@ import { maidUpdatePersonalInformation, maidUpdateContactInformation } from './u
 import { forgotPassword, resetPassword, forgotMaidPassword, resetMaidPassword } from './forgotReset';
 import { verifyOTP, resendTo, verifyOTPMaid, resendToMaid } from './verify';
 const Login__l = document.getElementById('login')
-const maidlogin = document.getElementById('maid-login')
+const maidlogin__1 = document.getElementById('maid-login')
 const loginForm = document.querySelector('.login-form');
 const signForm = document.querySelector('.signup-form');
 const logOut = document.getElementById('logout');
@@ -175,8 +175,8 @@ if (Login__l) {
         location.assign('/login')
     })
 }
-if (maidlogin) {
-    maidlogin.addEventListener('click', e => {
+if (maidlogin__1) {
+    maidlogin__1.addEventListener('click', e => {
         e.preventDefault();
         location.assign('/maid-login')
     })

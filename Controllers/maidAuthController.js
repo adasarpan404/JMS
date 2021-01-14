@@ -81,7 +81,6 @@ exports.login = catchAsync(async (req, res, next) => {
     }
 
     const user = await Maid.findOne({ email }).select('+password');
-    console.log(user)
     if (!user || !(await user.correctPassword(password, user.password))) {
         return next(new AppError('incorrect email and password', 401))
     }
@@ -229,5 +228,23 @@ exports.updateContactInformation = catchAsync(async (req, res, next) => {
     res.status(200).json({
         status: 'success',
         user,
+    })
+})
+
+exports.loginWithMaid = catchAsync(async (req, res, next) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return next(new AppError('Please provide email and password', 400))
+    }
+    const user = await User.findOne({ email }).select('+password');
+    if (!user || !(await user.correctPassword(password, user.password))) {
+        return next(new AppError('incorrect email and password', 401))
+    }
+    res.status(200).json({
+        status: 'success',
+        token,
+        data: {
+            user
+        }
     })
 })

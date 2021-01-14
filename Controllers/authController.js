@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { promisify } = require('util');
 const crypto = require('crypto')
-const Maid = require('../Model/maidModel');
 const AppError = require('../Utils/appError');
 const catchAsync = require('../Utils/catchAsync')
 const User = require('./../Model/userModel')
@@ -62,6 +61,8 @@ exports.verify = catchAsync(async (req, res, next) => {
         return next(new AppError('OTP is invalid or expired', 400))
     }
     user.verified = true;
+    user.OTP = undefined;
+    user.OTPExpires = undefined;
     await user.save({ validateBeforeSave: false });
     createSendToken(user, 200, res);
     const url = `${req.protocol}://${req.get('host')}/`;
@@ -218,4 +219,20 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
     createSendToken(user, 200, res);
 
 
+})
+exports.loginWithUser = catchAsync(async (req, res, next) => {
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return next(new AppError('please provide email and password', 400))
+    }
+    const user = await User.findOne({ email }).select('+password');
+    if (!user || !(await user.correctPassword(password, user.password))) {
+        return next(new AppError('incorrect email and password', 401))
+    }
+    res.status(200).json({
+        status: 'success',
+        data: {
+            user
+        }
+    })
 })

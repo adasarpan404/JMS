@@ -2,6 +2,7 @@ const express = require('express')
 const morgan = require('morgan')
 const xss = require('xss-clean')
 const path = require('path')
+const cors = require('cors')
 const compression = require('compression');
 const mongoSantize = require('express-mongo-sanitize')
 const helmet = require('helmet')
@@ -15,6 +16,7 @@ const AppError = require('./Utils/appError')
 const cookieParser = require('cookie-parser')
 
 const app = express();
+
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,7 +27,8 @@ app.use(xss());
 app.use(mongoSantize());
 
 
-
+app.use(cors());
+app.options('*', cors());
 app.use(express.json());
 app.use(cookieParser())
 app.use(compression());
