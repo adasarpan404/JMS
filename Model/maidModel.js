@@ -101,6 +101,10 @@ const maidSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    verifiedForWork: {
+        type: Boolean, 
+        default: false,
+    },
     city: {
         type: String,
         enum: ['Delhi', 'Noida', 'Mumbai'],
