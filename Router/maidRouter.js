@@ -17,6 +17,7 @@ router.post('/logininWithMaid', maidAuth.loginWithMaid);
 
 router.get('/', authController.protect, maidController.getAllMaid);
 router.post('/updatePersonalInformation', maidAuth.protect, maidAuth.updatePersonalInformation);
+router.patch('/updateMe', maidAuth.protect, maidController.uploadUserPhoto, maidController.resizeUserPhoto, maidController.updateMe);
 router.post('/updateContactInformation', maidAuth.protect, maidAuth.updateContactInformation);
 router.get('/getTop5Maid', authController.protect, maidController.getTop5Maids, maidController.getAllMaid);
 router.route('/:id').get(authController.protect, maidController.getMaid).patch(authController.protect, authController.restrictTo('regional-admin', 'admin'), maidController.updateMaid).delete(authController.protect, authController.restrictTo('regional-admin', 'admin'), maidController.deleteMaid);
