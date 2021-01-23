@@ -22,20 +22,22 @@ const upload = multer({
 exports.uploadUserPhoto = upload.single('photo');
 exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     if (!req.file) return next();
-    req.file.filename = `maid-${req.user.id}-${Date.now()}.jpeg`;
+    req.file.filename = `maid-${req.user.id}-${Date.now()}.webp`;
     await sharp(req.file.buffer)
         .resize(500, 600)
-        .toFormat('jpeg')
-        .toFile(`public/img/users/${req.file.filename}`);
+        .toFormat('webp')
+        .toFile(`public/img/maids/${req.file.filename}`);
 
     next();
 })
+
 exports.getTop5Maids = (req, res, next) => {
     req.query.limit = '5';
     req.query.sort = '-ratingsAverage,price'
     req.query.fields = 'name, price, ratingsAverage, role, photos, videos, verified, city'
     next();
 }
+
 const filterObj = (obj, ...allowedFields) => {
     const newObj = {};
     Object.keys(obj).forEach(el => {

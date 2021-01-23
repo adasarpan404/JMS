@@ -1,4 +1,6 @@
 const catchAsync = require('../Utils/catchAsync');
+const Maid = require('../Model/maidModel')
+const APIFeatures = require('../Utils/apiFeatures')
 
 
 
@@ -72,3 +74,33 @@ exports.getVerifyMaidOTP = catchAsync(async (req, res, next) => {
 }
 
 )
+
+exports.getMaid = catchAsync(async (req, res, next) => {
+    const AllFeatures = new APIFeatures(Maid.find({ city: req.user.city }), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+
+    const cookFeatures = new APIFeatures(Maid.find({ role: 'cook' }), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+
+    const nanyFeatures = new APIFeatures(Maid.find({ role: 'nanny' }), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+
+    const Allmaids = await AllFeatures.query;
+    const cookMaid = await cookFeatures.query;
+    const nannyMaids = await nanyFeatures.query;
+    res.status(200).render('overview', {
+        Allmaids,
+        cookMaid,
+        nannyMaids
+    })
+
+})

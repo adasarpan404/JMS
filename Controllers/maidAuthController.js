@@ -67,7 +67,7 @@ exports.resendTo = catchAsync(async (req, res, next) => {
     }
     const OTP = user.createPasswordResetToken();
     await user.save({ validateBeforeSave: false });
-    await new Email(newUser, OTP).sendWelcomeOTP();
+    await new Email(user, OTP).sendWelcomeOTP();
     res.status(200).json({
         status: 'success',
         message: 'email send successfully'

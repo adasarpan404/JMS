@@ -1,13 +1,291 @@
-html
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    
-    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1' crossorigin='anonymous')
-    link(rel='stylesheet' href='/css/maid.css')
-    title=title
-  body
-    p=purpose
-    a#logout logout
-script(src="/js/bundle.js")     
-    
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Main-screen
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.15.1/css/all.css' integrity='sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp' crossorigin='anonymous')
+  // external css
+  link(rel='stylesheet' href='/CSS/style.css')
+  link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.css')
+  link(rel='stylesheet' href='https://unpkg.com/swiper/swiper-bundle.min.css')
+section#title
+  nav.navbar.navbar-expand-lg.fixed-top
+    a.navbar-brand(href='#')
+      | the
+      span(style='color: #00c690;') maid
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarTogglerDemo' aria-controls='navbarTogglerDemo02' aria-expanded='false' aria-label='Toggle navigation')
+      i.fas.fa-bars
+    #navbarTogglerDemo.collapse.navbar-collapse
+      ul.navbar-nav.ms-auto
+        li.nav-item
+          a.nav-link.me-3(href='#')
+            i.fas.fa-wallet.fs-5  
+            span  Wallet
+        li.nav-item.me-3
+          a.nav-link(href='#')
+            i.fas.fa-clipboard-list.fs-5
+            span Booking
+        li.nav-item.me-3
+          a.nav-link(href='#')
+            i.fas.fa-bell.fs-5
+            span Notification
+        li.nav-item.dropdown.active
+          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+            img.rounded-circle.z-depth-0(src='WhatsApp Image 2020-05-30 at 8.34.11 PM.jpeg' alt='avatar image' height='25')
+            |                             Arpan Das
+          ul.dropdown-menu(aria-labelledby='navbarDropdown')
+            li
+              a.dropdown-item(href='#') My account
+            li
+              a.dropdown-item(href='#') Blog
+            li
+              a.dropdown-item(href='#') Private Policy
+            li
+              a.dropdown-item(href='#') Terms of uses
+            li
+              hr.dropdown-divider
+            li
+              a.dropdown-item(href='#') LOGOUT
+.banner-item.active
+  .container
+    .site-content
+      .d-flex.justify-content-start
+        .d-flex.flex-column
+          h1.animate__animated.animate__lightSpeedInRight.animate__slow-2s.h1.h1-responsive
+            | A clean home 
+            span(style='color: #00c690;') is a happy home.
+          p.animate__animated.animate__lightSpeedInLeft
+            | A maid is a household worker who cleans and performs
+            | various other tasks.
+section#search-section
+  .container
+    .col-md-10.mx-auto.search-area.shadow
+      .row
+        .col-lg-4.col-12.search-box
+          input.form-control(type='search' placeholder='Search' aria-label='Search')
+        .col-lg-2.col-12.search-box
+          select.form-select(aria-label='Default select example')
+            option(selected='' disabled='' value='') Maid
+            option(value='1') House Maid
+            option(value='2') Cook Maid
+            option(value='3') Nanny Maid
+            option(value='3') Senior Citizen Care
+        .col-lg-2.col-12.search-box
+          select.form-select(aria-label='Default select example')
+            option(selected='' disabled='' value='') State
+            option(value='1') Uttar Pradesh
+            option(value='2') Delhi
+        .col-lg-2.col-12.search-box
+          select.form-select(aria-label='Default select example')
+            option(selected='' disabled='' value='') District
+            option(value='1') Mathura
+            option(value='2')  Gautam Buddh Nagar
+        .col-lg-2.col-12.ms-auto.my-auto
+          button.btn.btn-custom Search
+section#property-section
+  .container
+    h1.h1.h1-responsive House Maid In Your Area
+    .filteration
+      a(href='#')
+        | ALL MAID 
+        i.fas.fa-arrow-right
+    #property-slider
+      .swiper-container
+        .swiper-wrapper
+          each maid in Allmaids
+            .swiper-slide
+              .property-list.shadow
+                .image
+                  img(src=`public/img/maids/${maid.photo}.webp` alt=`${maid.name}`)
+                .text-start.d-flex
+                  h4=maid.name
+                  span.ms-auto
+                    var n=0;
+                    while n <= Math.floor(maid.ratingsAverage)
+                      i.fas.fa-star
+                      n++
+                .text-start.mt-1
+                  p(style='color: black;')
+                    | An address is a collection of information, presented in a
+                    | mostly fixed format
+                .text-center
+                  button.btn.btn-custom1 Hire
+          |                         ...
+main#main
+  section#collection.section-collection.offering
+    .container
+      .collection-container
+        .collection-box
+          .img-container
+            img.collection-02(src='/Image/cleaning.webp' alt='')
+          .collection-content
+            .collection-data
+              span We are offering 
+              h1 30% OFF
+              span on House Maid Services
+              a(href='#') Hire Now 
+        .collection-box
+          .img-container
+            img.collection-01(src='/Image/CleaningMaid.webp' alt='')
+          .collection-content
+            .collection-data
+              span We are offering 
+              h1 30% OFF
+              span on Cook Maid Services
+              a(href='#') Hire Now
+section#property-section
+  .container
+    h1.h1.h1-responsive.mb-4 Cook Maid Services In Your Area
+    .filteration
+      a(href='#')
+        | ALL MAID 
+        i.fas.fa-arrow-right
+    #property-slider
+      .swiper-container
+        .swiper-wrapper
+          each maid in cookMaid
+            .swiper-slide
+              .property-list.shadow
+                .image
+                  img(src=`${public/img/maids/{maid.photo}.webp}` alt=`${maid.name}`)
+                .text-start.d-flex
+                  h4=maid.name
+                  span.ms-auto
+                    var n=0;
+                    while n <= Math.floor(maid.ratingsAverage)
+                      i.fas.fa-star
+                      n++
+                .text-start.mt-1
+                  p(style='color: black;')
+                    | An address is a collection of information, presented in a
+                    | mostly fixed format
+                .text-center
+                  button.btn.btn-custom1 Hire
+          |                         ...
+section#property-section
+  .container
+    h1.h1.h1-responsive.mb-4 Nanny Services In Your Area
+    .filteration
+      a(href='#')
+        | ALL MAID 
+        i.fas.fa-arrow-right
+    #property-slider
+      .swiper-container
+        .swiper-wrapper
+          each maid in nannyMaids
+            .swiper-slide
+              .property-list.shadow
+                .image
+                  img(src=`public/img/maids/${maid.photo}.webp` alt='')
+                .text-start.d-flex
+                  h4=maid.name
+                  span.ms-auto
+                    var n=0;
+                    while n <= Math.floor(maid.ratingsAverage)
+                      i.fas.fa-star
+                      n++
+                .text-start.mt-1
+                  p(style='color: black;')
+                    | An address is a collection of information, presented in a
+                    | mostly fixed format
+                .text-center
+                  button.btn.btn-custom1 Hire
+          |                         ...
+section.endpoint
+  footer.bg-dark.text-white.mt-5
+    .row
+      .col-md-3.col-12
+        h4.footername the-maid
+        p.footerp
+          | Lorem ipsum dolor 
+          br
+          |  sit amet consectetur,
+          br
+          |  adipisicing elit. Eligendi, 
+          br
+          |                         aliquam
+      .col-md-2.mx-auto.mb-4.footerleft
+        h4.footername1.text-left Helpful links
+        ul.list-unstyled.footerul.text-left
+          li.my-2
+            a(href='#') Support
+          li.my-2
+            a(href='#') Terms &amp; condition
+          li.my-2
+            a(href='#') Privacy &amp; policy
+      .col-md-2.mx-auto.mb-4.footerleft
+        h4.footername2.text-left Information
+        ul.list-unstyled.footerul.text-left
+          li.my-2
+            a(href='#') Home
+          li.my-2
+            a(href='#') What we offer
+          li.my-2
+            a(href='#') Services
+          li.my-2
+            a(href='#') Our Team
+      .col-md-2.mx-auto.mb-4.footerleft
+        h4.footername2.text-left Contact
+        ul.list-unstyled.footerul.text-left
+          li.my-2
+            a(href='mailto:webmaster@example.com') maidworld234@gmail.com
+          li.my-2
+            a(href='tel:+91 7668798433') +91 7668798433
+          li.my-2
+            a(href='tel:+91 7534927815') +91 7534927815
+      .col-md-2.mx-auto.mb-4.footerleft
+        h4.footername2.text-left Address
+        ul.list-unstyled.footerul.text-left
+          li.my-2
+            a(href='mailto:webmaster@example.com')
+              | Visit us at:
+              br
+              |                                 Example.com
+              br
+              |                                 Box 564, Disneyland
+              br
+              |                                 USA
+    ul.list-unstyled.d-flex.footersocialicon.justify-content-center
+      li
+        a.fab.fa-linkedin.fa-2x(href='#')
+      li
+        a.fab.fa-instagram.ms-5.fa-2x(href='#')
+      li
+        a.fab.fa-facebook.ms-5.fa-2x(href='#')
+      li
+        a.fab.fa-twitter.ms-5.fa-2x(href='#')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js' integrity='sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW' crossorigin='anonymous')
+// swiper script
+script(src='https://unpkg.com/swiper/swiper-bundle.js')
+script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
+script.
+  var mySwiper = new Swiper('#property-slider .swiper-container', {
+  // Optional parameters
+  slidesPerView: 1,
+  spaceBetween: 30,
+  breakpoints: {
+  640: {
+  slidesPerView: 1,
+  spaceBetween: 10,
+  },
+  768: {
+  slidesPerView: 2,
+  spaceBetween: 20,
+  },
+  1024: {
+  slidesPerView: 4,
+  spaceBetween: 30,
+  },
+  }
+  })
+script.
+  var swiper = new Swiper('#service-container .swiper-container', {
+  slidesPerView: 3,
+  slidesPerColumn: 2,
+  spaceBetween: 30,
+  pagination: {
+  el: '.swiper-pagination',
+  clickable: true,
+  },
+  });

@@ -77,7 +77,7 @@ const maidSchema = new mongoose.Schema({
     },
     ratingsAverage: {
         type: Number,
-        default: 4,
+        default: 4.2,
         min: [1, 'Rating must be above 1.0'],
         max: [5, 'Rating must be below 5.0'],
         set: val => Math.round(val * 10) / 10,
@@ -92,7 +92,7 @@ const maidSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['house-clean', 'cook', 'both'],
+        enum: ['house-clean', 'cook', 'nanny'],
     },
     videos: {
         type: String,
@@ -102,7 +102,7 @@ const maidSchema = new mongoose.Schema({
         default: false,
     },
     verifiedForWork: {
-        type: Boolean, 
+        type: Boolean,
         default: false,
     },
     city: {
