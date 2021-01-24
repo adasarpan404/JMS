@@ -1,5 +1,5 @@
 const factory = require('./handleFactory')
-const stripe = require('Stripe')(process.env.STRIPE_KEY)
+const stripe = require('stripe')(process.env.STRIPE_KEY)
 const booking = require('./../Model/bookingModel')
 const catchAsync = require('../Utils/catchAsync')
 const Maid = require('./../Model/maidModel')
@@ -24,7 +24,9 @@ exports.getSessionCheckOut = catchAsync(async (req, res, next) => {
             {
                 name: `${maid.name} Maid`,
                 description: `${maid.name} you bought this`,
-
+                images: [
+                    `${req.protocol}://${req.get('host')}/img/maids/${maid.photo}`
+                ],
                 amount: maid.price * 100,
                 currency: 'INR',
                 quantity: 1
