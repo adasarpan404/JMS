@@ -69,7 +69,7 @@ exports.verify = catchAsync(async (req, res, next) => {
 })
 
 exports.resendTo = catchAsync(async (req, res, next) => {
-    const user = await User.find({
+    const user = await User.findOne({
         email: req.user.email,
     })
     if (!user) {
@@ -77,12 +77,12 @@ exports.resendTo = catchAsync(async (req, res, next) => {
     }
     const OTP = user.createPasswordResetToken();
     await user.save({ validateBeforeSave: false });
-
+    await new Email(user, OTP).sendWelcomeOTP();
     res.status(200).json({
         status: 'success',
         message: 'email send successfully'
     })
-    await new Email(newUser, OTP).sendWelcomeOTP();
+
 
 
 })

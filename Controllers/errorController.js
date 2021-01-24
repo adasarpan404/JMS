@@ -33,12 +33,14 @@ const sendErrorDev = (err, req, res) => {
             message: err.message,
             stack: err.stack
         });
+
     }
     else {
         res.status(200).render('base', {
             title: 'something went wrong',
             purpose: err.message
         })
+
     }
     // B) RENDERED WEBS
 }

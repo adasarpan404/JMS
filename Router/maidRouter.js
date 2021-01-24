@@ -21,7 +21,6 @@ router.patch('/updateMe', maidAuth.protect, maidController.uploadUserPhoto, maid
 router.post('/updateContactInformation', maidAuth.protect, maidAuth.updateContactInformation);
 router.get('/getTop5Maid', authController.protect, maidController.getTop5Maids, maidController.getAllMaid);
 router.route('/:id').get(authController.protect, maidController.getMaid).patch(authController.protect, authController.restrictTo('regional-admin', 'admin'), maidController.updateMaid).delete(authController.protect, authController.restrictTo('regional-admin', 'admin'), maidController.deleteMaid);
-router.post('./pay/:maidId', authController.protect, bookingController.setMaidUserIds, Transaction.createTransactiontoMaid, bookingController.createBooking)
 router.use('/:maidId/reviews', reviewRouter)
 
 

@@ -1,7 +1,8 @@
 const factory = require('./handleFactory')
-
+const stripe = require('Stripe')(process.env.STRIPE_KEY)
 const booking = require('./../Model/bookingModel')
 const catchAsync = require('../Utils/catchAsync')
+const Maid = require('./../Model/maidModel')
 
 exports.setMaidUserIds = catchAsync(async (req, res, next) => {
     if (!req.body.Maid) req.body.Maid = req.params.maidId;
@@ -9,7 +10,37 @@ exports.setMaidUserIds = catchAsync(async (req, res, next) => {
     next();
 })
 
-exports.createBooking = factory.createOne(booking)
+exports.getSessionCheckOut = catchAsync(async (req, res, next) => {
+    const maid = await Maid.findById(req.params.maidId);
+    console.log(maid)
+    console.log(req.user)
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        success_url: `${req.protocol}://${req.get('host')}/`,
+        cancel_url: `${req.protocol}://${req.get('host')}/maid/${maid.id}`,
+        customer_email: req.user.email,
+        client_reference_id: req.params.maidId,
+        line_items: [
+            {
+                name: `${maid.name} Maid`,
+                description: `${maid.name} you bought this`,
+
+                amount: maid.price * 100,
+                currency: 'INR',
+                quantity: 1
+            }
+        ]
+    });
+
+    res.status(200).json({
+        status: 'success',
+        session
+    })
+
+
+
+
+})
 
 exports.getAllBooking = factory.getAll(booking)
 

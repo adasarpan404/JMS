@@ -90,7 +90,7 @@ color: #1fab89;
 
 .banner-item{
 
-    background-image: url(/public/Image/m.webp);
+    background-image: url(/Image/m.webp);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

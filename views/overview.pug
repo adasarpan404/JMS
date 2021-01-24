@@ -97,20 +97,20 @@ section#property-section
             .swiper-slide
               .property-list.shadow
                 .image
-                  img(src=`public/img/maids/${maid.photo}.webp` alt=`${maid.name}`)
+                  img(src=`img/maids/${maid.photo}` alt=`${maid.name}`)
                 .text-start.d-flex
                   h4=maid.name
                   span.ms-auto
-                    var n=0;
-                    while n <= Math.floor(maid.ratingsAverage)
+                    - var n=0;
+                    while n < maid.ratingsAverage
                       i.fas.fa-star
-                      n++
+                      - n++
                 .text-start.mt-1
                   p(style='color: black;')
                     | An address is a collection of information, presented in a
                     | mostly fixed format
                 .text-center
-                  button.btn.btn-custom1 Hire
+                  a.btn.btn-custom1(href=`/maid/${maid.id}`) Hire
           |                         ...
 main#main
   section#collection.section-collection.offering
@@ -148,20 +148,21 @@ section#property-section
             .swiper-slide
               .property-list.shadow
                 .image
-                  img(src=`${public/img/maids/{maid.photo}.webp}` alt=`${maid.name}`)
+                  img(src=`img/maids/${maid.photo}` alt=`${maid.name}`)
                 .text-start.d-flex
                   h4=maid.name
                   span.ms-auto
-                    var n=0;
-                    while n <= Math.floor(maid.ratingsAverage)
+                    - var n=0;
+                    - var number = Math.floor(maid.ratingsAverage)
+                    while n < number
                       i.fas.fa-star
-                      n++
+                      - n++
                 .text-start.mt-1
                   p(style='color: black;')
                     | An address is a collection of information, presented in a
                     | mostly fixed format
                 .text-center
-                  button.btn.btn-custom1 Hire
+                  a.btn.btn-custom1(href=`/maid/${maid.id}`) Hire
           |                         ...
 section#property-section
   .container
@@ -177,20 +178,21 @@ section#property-section
             .swiper-slide
               .property-list.shadow
                 .image
-                  img(src=`public/img/maids/${maid.photo}.webp` alt='')
+                  img(src=`img/maids/${maid.photo}` alt='')
                 .text-start.d-flex
                   h4=maid.name
                   span.ms-auto
-                    var n=0;
-                    while n <= Math.floor(maid.ratingsAverage)
+                    - var n=0;
+                    - var number = Math.floor(maid.ratingsAverage);
+                    while n < number
                       i.fas.fa-star
-                      n++
+                      - n++
                 .text-start.mt-1
                   p(style='color: black;')
                     | An address is a collection of information, presented in a
                     | mostly fixed format
                 .text-center
-                  button.btn.btn-custom1 Hire
+                  a.btn.btn-custom1(href=`/maid/${maid.id}`) Hire
           |                         ...
 section.endpoint
   footer.bg-dark.text-white.mt-5

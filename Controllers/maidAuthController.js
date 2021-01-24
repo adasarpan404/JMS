@@ -59,12 +59,13 @@ exports.verify = catchAsync(async (req, res, next) => {
 })
 exports.resendTo = catchAsync(async (req, res, next) => {
 
-    const user = await Maid.find({
+    const user = await Maid.findOne({
         email: req.user.email,
     })
     if (!user) {
         return next(new AppError('there is no user associated with these email', 400))
     }
+    console.log(user)
     const OTP = user.createPasswordResetToken();
     await user.save({ validateBeforeSave: false });
     await new Email(user, OTP).sendWelcomeOTP();

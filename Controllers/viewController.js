@@ -1,6 +1,7 @@
 const catchAsync = require('../Utils/catchAsync');
 const Maid = require('../Model/maidModel')
 const APIFeatures = require('../Utils/apiFeatures')
+const AppError = require('./../Utils/appError')
 
 
 
@@ -76,7 +77,7 @@ exports.getVerifyMaidOTP = catchAsync(async (req, res, next) => {
 )
 
 exports.getMaid = catchAsync(async (req, res, next) => {
-    const AllFeatures = new APIFeatures(Maid.find({ city: req.user.city }), req.query)
+    const AllFeatures = new APIFeatures(Maid.find(), req.query)
         .filter()
         .sort()
         .limitFields()
@@ -103,4 +104,14 @@ exports.getMaid = catchAsync(async (req, res, next) => {
         nannyMaids
     })
 
+});
+
+exports.getOneMaid = catchAsync(async (req, res, next) => {
+    const maid = await Maid.findById(req.params.maidId);
+    if (!maid) {
+        return next(new AppError('There is no maid associated with that name', 400))
+    }
+    res.status(200).render('detail', {
+        maid
+    })
 })

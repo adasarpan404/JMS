@@ -47,6 +47,7 @@ const userSchema = new mongoose.Schema({
     city: {
         type: String,
         enum: ['Delhi', 'Noida', 'Mumbai'],
+        default: 'Noida'
     },
     wallet: {
         type: Number,
@@ -107,8 +108,7 @@ userSchema.methods.createPasswordResetToken = function () {
     let OTP = Math.floor(100000 + Math.random() * 900000);
     const OTPString = OTP.toString();
     this.OTP = crypto.createHash('sha256').update(OTPString).digest('hex');
-    this.OTP = OTPString;
-    this.OTPExpires = Date.now() + 4 * 60 * 1000;
+    this.OTPExpires = Date.now() + 10 * 60 * 1000;
     return OTPString;
 }
 const User = mongoose.model('User', userSchema);

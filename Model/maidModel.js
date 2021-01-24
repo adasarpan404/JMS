@@ -20,7 +20,7 @@ const maidSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'please provide password'],
-        minlength: 9,
+        minlength: 8,
         select: false,
     },
     passwordConfirm: {
@@ -35,8 +35,16 @@ const maidSchema = new mongoose.Schema({
     dateOfBirth: {
         type: Date,
     },
+    age: {
+        type: Number,
+        default: 21
+    },
     dateOfJoining: {
         type: Date,
+    },
+    experience: {
+        type: Number,
+        default: 3,
     },
     Gender: {
         type: String,
@@ -74,6 +82,7 @@ const maidSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
+        default: 4000
     },
     ratingsAverage: {
         type: Number,
@@ -84,7 +93,7 @@ const maidSchema = new mongoose.Schema({
     },
     ratingsQuantity: {
         type: Number,
-        default: 0
+        default: 1
     },
     photo: {
         type: String,
@@ -93,6 +102,7 @@ const maidSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: ['house-clean', 'cook', 'nanny'],
+        default: 'house-clean'
     },
     videos: {
         type: String,
@@ -108,6 +118,7 @@ const maidSchema = new mongoose.Schema({
     city: {
         type: String,
         enum: ['Delhi', 'Noida', 'Mumbai'],
+        default: 'Noida'
     },
 
     passwordChangeAt: Date,
@@ -160,7 +171,7 @@ maidSchema.methods.changePasswordAfter = function (JWTtimeStamp) {
     return false;
 }
 maidSchema.methods.createPasswordResetToken = function () {
-    let OTP = Math.floor(1000000 + Math.random() * 9000000)
+    let OTP = Math.floor(100000 + Math.random() * 900000)
     const OTPString = OTP.toString();
     this.OTP = crypto.createHash('sha256').update(OTPString).digest('hex');
     this.OTPExpires = Date.now() + 10 * 60 * 1000;

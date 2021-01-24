@@ -36,6 +36,7 @@
     "nodemailer": "^6.4.16",
     "pug": "^3.0.0",
     "sharp": "^0.27.0",
+    "stripe": "^8.132.0",
     "telesignsdk": "^2.2.1",
     "twilio": "^3.54.1",
     "validator": "^13.1.17",

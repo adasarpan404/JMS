@@ -10,6 +10,7 @@ const viewRouter = require('./Router/viewRouter')
 const globalErrorHandler = require('./Controllers/errorController')
 const userRouter = require('./Router/userRouter');
 const maidRouter = require('./Router/maidRouter');
+const bookingRouter = require('./Router/bookingRoute')
 const reviewRouter = require('./Router/reviewRouter')
 const requestRouter = require('./Router/requestRouter')
 const AppError = require('./Utils/appError')
@@ -34,7 +35,7 @@ app.use(cookieParser())
 app.use(compression());
 
 app.use('/', viewRouter)
-
+app.use('/api/v1/booking', bookingRouter)
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/maids', maidRouter);
 app.use('/api/v1/reviews', reviewRouter);

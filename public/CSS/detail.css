@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.form-control {
+    border: 2px solid #00000088;
+    border-right: none;
+    margin-left: 0.5rem;
+
+    border-radius: 50px;
+
+
+}
+
+.input-group {
+    width: 50%;
+    margin-left: 0.5rem;
+}
+
+.form-control:focus,
+.form-control:active {
+    border-color: #00000088;
+    outline: 0;
+    box-shadow: none;
+
+}
+
+.btn-custom1 {
+    border: 2px solid #00000088;
+
+
+    border-left: 0;
+    border-radius: 50px;
+    color: #00000088;
+    ;
+}
+
+.btn-custom1:focus,
+.btn-custom1:active {
+
+
+
+    outline: 0;
+    box-shadow: none;
+}
+
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+    box-shadow: none;
+}
+
+
+.navbar {
+
+    font-weight: 400;
+    font-size: 1rem;
+    background: #ffffff;
+    padding: 10px 30px;
+
+}
+
+.navbar-nav .nav-item .nav-link:focus,
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:active {
+    color: #1fab89;
+
+    font-weight: 400;
+    transform: scale(0.9);
+
+
+}
+
+.navbar-brand {
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    margin-right: 0;
+}
+
+.nav-link {
+    padding: 0px;
+
+}
+
+.navbar-nav .nav-item .nav-link {
+
+    color: rgba(0, 0, 0, 0.815);
+    text-align: left;
+    transition: 0.5s ease-in;
+    padding: 3px;
+
+}
+
+.location a {
+    text-decoration: none;
+    color: #1fab89;
+}
+
+.dropdown-menu {
+    min-width: 8rem;
+}
+
+.dropdown-menu .dropdown-item a:hover {
+    color: #1fab89;
+}
+
+
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: #1fab89;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 3px solid #1fab89;
+    background: #ffffff;
+
+}
+
+.image-box {
+    width: 100%;
+    height: 585px;
+    overflow: hidden;
+
+
+
+}
+
+.image-box .maid-image1 {
+    display: block;
+    width: 100%;
+
+    object-fit: cover;
+}
+
+.rating-time {
+    color: #1fab89;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Rating-list p {
+    font-family: 'Roboto', sans-serif;
+}
+
+.rated {
+    color: #1fab89;
+}
+
+.box-circle {
+    border: 3px solid #00000021;
+    width: 0%;
+    margin-top: 12px;
+    height: 5px;
+    margin-left: 15px;
+}
+
+#details {
+    margin-top: 5rem;
+}
+
+.address1 {
+    font-weight: 500;
+}
+
+.contact-number a {
+    text-decoration: none;
+    color: #1fab89;
+}
+
+#about-more {
+    display: none;
+}
+
+.maid-description button {
+    border: none;
+    background-color: #fff;
+}
+
+#read {
+    color: #1fab89;
+}
+
+#read:focus {
+    color: #1fab89;
+    background-color: #fff;
+    border-color: #206A5D;
+
+    outline: 0;
+    box-shadow: none;
+
+}
+
+.user-image img {
+    display: block;
+    border-radius: 50%;
+    width: 60%;
+    margin-left: 17px;
+}
+
+.user-image {
+    width: 10%;
+    height: 100%;
+}
+
+.user-detail {
+    list-style: none;
+    padding-left: 0;
+}
+
+.user-name {
+    font-size: 20px;
+}
+
+.btn-custom {
+    background-color: #1fab89;
+    color: white;
+    border-color: #1fab89;
+    min-height: 50px;
+    font-weight: 500;
+    transition: all 0.5s ease-in;
+    width: 50%;
+}
+
+.btn-custom:hover {
+    color: #fff;
+    background-color: #206A5D;
+}
+
+@media (max-width:991px) and (min-width:768px) {
+    .image-box .maid-image1 {
+        width: 100%;
+        height: 115%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .image-box {
+        width: 100%;
+        height: 520px;
+        overflow: hidden;
+        border-radius: 30px 0 30px 0;
+        margin-bottom: 10px;
+
+
+    }
+
+    .user-image {
+        width: 15%;
+    }
+
+}
+
+@media (max-width:767px) {
+    #details {
+        margin-top: 0;
+    }
+
+    .image-box .maid-image1 {
+        width: 100%;
+        height: 150%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .image-box {
+        width: 100%;
+        height: 420px;
+        overflow: hidden;
+        border-radius: 30px 0 30px 0;
+        margin-bottom: 10px;
+
+
+    }
+
+    .btn-custom {
+        width: 100%;
+    }
+
+    .user-image {
+        width: 17%;
+    }
+
+    .user-image img {
+        width: 70%;
+        margin-left: 10px;
+    }
+
+
+}
