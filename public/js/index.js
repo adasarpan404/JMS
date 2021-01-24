@@ -3,10 +3,7 @@ import '@babel/polyfill';
 import { login, signup, logout, maidLogin, maidSignUp, maidLogout } from './login';
 import { maidUpdatePersonalInformation, maidUpdateContactInformation } from './updateInformation';
 import { forgotPassword, resetPassword, forgotMaidPassword, resetMaidPassword } from './forgotReset';
-import { verifyOTP, resendTo, verifyOTPMaid, resendToMaid } from './verify';
-import { bookTour } from './stripe';
-const Login__l = document.getElementById('login')
-const maidlogin__1 = document.getElementById('maid-login')
+import { verifyOTP, resendTo, verifyOTPMaid, resendToMaid } from './verify'
 const loginForm = document.querySelector('.login-form');
 const signForm = document.querySelector('.signup-form');
 const logOut = document.getElementById('logout');
@@ -23,7 +20,6 @@ const verifyform = document.querySelector('.verify-form');
 const resendCode = document.getElementById('resendCode');
 const verifyMaid = document.querySelector('.verify-maid-form')
 const resendCodeM = document.getElementById('resendCodeMaid')
-const bookbtn = document.getElementById('book-maid')
 if (loginForm) {
     loginForm.addEventListener('submit', e => {
         e.preventDefault();
@@ -169,12 +165,4 @@ if (verifyMaid) {
 }
 if (resendCodeM) {
     resendCodeM.addEventListener('click', resendToMaid)
-}
-
-if (bookbtn) {
-    bookbtn.addEventListener('click', e => {
-        e.target.textContent = 'processing...';
-        const { maidId } = e.target.dataset;
-        bookTour(maidId)
-    })
 }
