@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { showAlert } from './alert';
-const stripe = Stripe('pk_test_51I475HIdMjerK5lwrVjdR8S82kcuXg4UebgvVlfboxNuBhbjpWrugcu7iq85vLo7C7WF5Nx3gUj1SHRtcWrKp29b00vx5pSced')
+const Stripe = require('stripe')
+const stripe = Stripe(pk_test_51I475HIdMjerK5lwrVjdR8S82kcuXg4UebgvVlfboxNuBhbjpWrugcu7iq85vLo7C7WF5Nx3gUj1SHRtcWrKp29b00vx5pSced)
 
 export const bookTour = async maidId => {
     try {

@@ -171,18 +171,6 @@ if (resendCodeM) {
     resendCodeM.addEventListener('click', resendToMaid)
 }
 
-if (Login__l) {
-    Login__l.addEventListener('click', e => {
-        e.preventDefault();
-        location.assign('/login')
-    })
-}
-if (maidlogin__1) {
-    maidlogin__1.addEventListener('click', e => {
-        e.preventDefault();
-        location.assign('/maid-login')
-    })
-}
 if (bookbtn) {
     bookbtn.addEventListener('click', e => {
         e.target.textContent = 'processing...';
