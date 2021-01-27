@@ -77,6 +77,8 @@ exports.getVerifyMaidOTP = catchAsync(async (req, res, next) => {
 )
 
 exports.getMaid = catchAsync(async (req, res, next) => {
+
+    const user = req.user;
     const AllFeatures = new APIFeatures(Maid.find(), req.query)
         .filter()
         .sort()
@@ -99,6 +101,7 @@ exports.getMaid = catchAsync(async (req, res, next) => {
     const cookMaid = await cookFeatures.query;
     const nannyMaids = await nanyFeatures.query;
     res.status(200).render('overview', {
+        user,
         Allmaids,
         cookMaid,
         nannyMaids

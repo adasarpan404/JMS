@@ -32,8 +32,8 @@ section#title
             span Notification
         li.nav-item.dropdown.active
           a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-            img.rounded-circle.z-depth-0(src='WhatsApp Image 2020-05-30 at 8.34.11 PM.jpeg' alt='avatar image' height='25')
-            |                             Arpan Das
+            img.rounded-circle.z-depth-0(src=`/img/users/${user.photo}` alt='avatar image' height='25')
+            =user.name
           ul.dropdown-menu(aria-labelledby='navbarDropdown')
             li
               a.dropdown-item(href='#') My account
@@ -46,7 +46,7 @@ section#title
             li
               hr.dropdown-divider
             li
-              a.dropdown-item(href='#') LOGOUT
+              a#logout.dropdown-item(href='#') LOGOUT
 .banner-item.active
   .container
     .site-content
@@ -262,6 +262,7 @@ script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap
 script(src='https://unpkg.com/swiper/swiper-bundle.js')
 script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
 script(src='https://js.stripe.com/v3/')
+script(src='/js/bundle.js')
 script.
   var mySwiper = new Swiper('#property-slider .swiper-container', {
   // Optional parameters

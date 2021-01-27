@@ -32,21 +32,21 @@ section#title
             span Notification
         li.nav-item.dropdown
           a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-            img.rounded-circle.z-depth-0(src='WhatsApp Image 2020-05-30 at 8.34.11 PM.jpeg' alt='user-image' height='25')
-            |                             Arpan Das
+            img.rounded-circle.z-depth-0(src=`/img/users/${user.photo}` alt='user-image' height='25')
+            =user.name
           ul.dropdown-menu(aria-labelledby='navbarDropdown')
             li
               a.dropdown-item(href='#') My account
             li
               a.dropdown-item(href='#') Blog
             li
-              a.dropdown-item(href='#') Private Policy
+              a.dropdown-item(href='#') Privacy Policy
             li
               a.dropdown-item(href='#') Terms of uses
             li
               hr.dropdown-divider
             li
-              a.dropdown-item(href='#') LOGOUT
+              a#logout.dropdown-item(href='#') LOGOUT
 section.product-detail
   .container-fluid.mt-5
     .container.shadow.p-2
