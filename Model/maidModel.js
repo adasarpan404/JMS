@@ -101,7 +101,7 @@ const maidSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['house-clean', 'cook', 'nanny'],
+        enum: ['house-clean', 'cook', 'nanny', 'elderlycare'],
         default: 'house-clean'
     },
     videos: {

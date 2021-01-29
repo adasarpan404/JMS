@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+.form-control {
+    border: 2px solid #00000088;
+    margin-left: 0.5rem;
+    border-right: none;
+    border-radius: 50px;
+
+}
+
+.input-group {
+    width: 50%;
+    margin-left: 0.5rem;
+}
+
+.form-control:focus,
+.form-control:active {
+    border-color: #00000088;
+    outline: 0;
+    box-shadow: none;
+
+}
+
+.btn-custom1 {
+    border: 2px solid #00000088;
+
+    border-left: 0;
+    border-radius: 50px;
+    color: #00000088;
+    ;
+}
+
+.btn-custom1:focus,
+.btn-custom1:active {
+
+    outline: 0;
+    box-shadow: none;
+}
+
+
+.navbar {
+
+    font-weight: 400;
+    font-size: 1rem;
+    background: #ffffff;
+    padding: 10px 30px;
+
+}
+
+.navbar-nav .nav-item .nav-link:focus,
+.navbar-nav .nav-item .nav-link:hover {
+    color: #1fab89;
+    border-bottom: 2px solid #1fab89;
+    font-weight: 400;
+    transform: scale(0.9);
+}
+
+.navbar-brand {
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    margin-right: 0;
+}
+
+.nav-link {
+    padding: 0px;
+
+}
+
+.navbar-nav .nav-item .nav-link {
+
+    color: rgb(0, 0, 0);
+    text-align: left;
+    transition: 0.5s ease-in;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.location a {
+    text-decoration: none;
+    color: #1fab89;
+}
+
+.dropdown-menu {
+    min-width: 8rem;
+}
+
+.dropdown-menu .dropdown-item a:hover {
+    color: #1fab89;
+}
+
+
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    color: #1fab89;
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 3px solid #1fab89;
+    background: #ffffff;
+
+}
+
+.maid2 {
+    margin-left: 3rem;
+}
+
+.maid3 {
+    margin-left: 3rem;
+}
+
+.maid4 {
+    margin-left: 3rem;
+}
+
+.nav-tabs>li>a {
+
+    color: #000;
+    font-weight: 500;
+    font-size: 1.7rem;
+    transition: all 0.5s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+    transform: scale(0.9);
+}
+
+.nav-tabs {
+    border-bottom: none
+}
+
+.maid-type {
+    margin-bottom: 3rem;
+    margin-top: 5rem;
+
+
+}
+
+.filter-option {
+    margin-bottom: 4rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.Featured-list a {
+    text-decoration: none;
+    color: #1fab89;
+    font-size: 1.1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card {
+    border: none;
+    border-radius: 30px 0 30px 0;
+}
+
+.card .cardimage {
+    width: 100%;
+    height: 265px;
+    overflow: hidden;
+}
+
+.card .cardimage img {
+    border-radius: 30px 0 30px 0;
+    padding: 10px;
+    width: 100%;
+    height: 150%;
+    object-fit: cover;
+
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 20px;
+}
+
+
+.Rating-list {
+    color: #1fab89;
+}
+
+.Maid-Name {
+    font-size: 1.5rem;
+    font-weight: 500;
+
+}
+
+.Maid-details {
+    margin-top: 0.8rem;
+    width: 70%;
+    font-size: 1.1rem;
+}
+
+.btn-custom {
+    background-color: #1fab89;
+    color: #fff;
+    text-align: center;
+    width: 50%;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 50px;
+}
+
+/* hidden id */
+.hidden-class {
+    display: none;
+}
+
+.hidden-class #hiddenid {
+    margin-bottom: 4rem;
+    font-size: 1.1rem;
+}
+
+
+@media only screen and (max-width:991px) {
+    .nav-tabs>li>a {
+        font-size: 1.5rem;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .nav-tabs>li>a {
+        font-size: 1.1rem;
+    }
+
+    .filter-option {
+        font-size: 0.9rem;
+    }
+
+    .Featured-list a {
+        font-size: .9rem;
+    }
+
+    .maid2 {
+        margin-left: 2rem;
+    }
+
+    .maid3 {
+        margin-left: 2rem;
+    }
+
+    .maid4 {
+        margin-left: 2rem;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .filter-option {
+
+        display: none;
+    }
+
+    .Featured-list a {
+        display: none;
+    }
+
+    .hidden-class {
+        display: contents;
+    }
+
+    .maid2 {
+        margin-left: 1rem;
+    }
+
+    .maid3 {
+        margin-left: 1rem;
+    }
+
+    .maid4 {
+        margin-left: 1rem;
+    }
+}
+
+@media only screen and (max-width:465px) {
+    .maid2 {
+        margin-left: 2rem;
+    }
+
+    .maid3 {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .maid4 {
+        margin-left: 2rem;
+        margin-top: 2rem;
+    }
+
+    .maid-type {
+        width: 68%;
+    }
+}
+
+@media only screen and (max-width:400px) {
+    .maid2 {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .maid3 {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .maid4 {
+        margin-left: 0;
+        margin-top: 2rem;
+    }
+
+    .maid-type {
+        width: 48%;
+        margin-top: 3rem;
+    }
+}

@@ -118,3 +118,38 @@ exports.getOneMaid = catchAsync(async (req, res, next) => {
         maid
     })
 })
+exports.getAllMaid = catchAsync(async (req, res, next) => {
+    const user = req.user;
+    const AllFeatures = new APIFeatures(Maid.find({ role: 'house-clean' }), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+
+    const cookFeatures = new APIFeatures(Maid.find({ role: 'cook' }), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+
+    const nanyFeatures = new APIFeatures(Maid.find({ role: 'nanny' }), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+
+    const elderFeatures = new APIFeatures(Maid.find({ role: 'elderlycare' }), req.query)
+
+    const Allmaids = await AllFeatures.query;
+    const cookMaid = await cookFeatures.query;
+    const nannyMaids = await nanyFeatures.query;
+    const elderMaids = await elderFeatures.query;
+
+    res.status(200).render('allMaids', {
+        user,
+        Allmaids,
+        cookMaid,
+        nannyMaids,
+        elderMaids
+    })
+})
