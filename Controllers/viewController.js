@@ -145,7 +145,7 @@ exports.getAllMaid = catchAsync(async (req, res, next) => {
     const nannyMaids = await nanyFeatures.query;
     const elderMaids = await elderFeatures.query;
 
-    res.status(200).render('allMaids', {
+    res.status(200).render('AllMaids', {
         user,
         Allmaids,
         cookMaid,
