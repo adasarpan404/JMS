@@ -15,6 +15,7 @@ const reviewRouter = require('./Router/reviewRouter')
 const requestRouter = require('./Router/requestRouter')
 const AppError = require('./Utils/appError')
 const cookieParser = require('cookie-parser')
+const notificationRouter = require('./Router/notificationRoute')
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/maids', maidRouter);
 app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/request', requestRouter);
+app.use('/api/v1/Notification', notificationRouter);
 
 app.all('*', (req, res, next) => {
     next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

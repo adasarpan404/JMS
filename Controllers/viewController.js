@@ -2,7 +2,7 @@ const catchAsync = require('../Utils/catchAsync');
 const Maid = require('../Model/maidModel')
 const APIFeatures = require('../Utils/apiFeatures')
 const AppError = require('./../Utils/appError')
-
+const Notification = require('../Model/notificationModel')
 
 
 
@@ -79,6 +79,11 @@ exports.getVerifyMaidOTP = catchAsync(async (req, res, next) => {
 exports.getMaid = catchAsync(async (req, res, next) => {
 
     const user = req.user;
+    const notificationFeatures = new APIFeatures(Notification.find(), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
     const AllFeatures = new APIFeatures(Maid.find(), req.query)
         .filter()
         .sort()
@@ -100,11 +105,13 @@ exports.getMaid = catchAsync(async (req, res, next) => {
     const Allmaids = await AllFeatures.query;
     const cookMaid = await cookFeatures.query;
     const nannyMaids = await nanyFeatures.query;
+    const notify = await notificationFeatures.query;
     res.status(200).render('overview', {
         user,
         Allmaids,
         cookMaid,
-        nannyMaids
+        nannyMaids,
+        notify,
     })
 
 });

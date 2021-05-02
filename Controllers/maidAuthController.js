@@ -225,6 +225,7 @@ exports.updateContactInformation = catchAsync(async (req, res, next) => {
     user.City = req.body.City;
     user.state = req.body.state;
     user.zipcode = req.body.zipcode;
+    await user.save({ validateBeforeSave: false });
     console.log(user)
     res.status(200).json({
         status: 'success',

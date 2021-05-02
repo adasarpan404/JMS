@@ -26,27 +26,35 @@ section#title
           a.nav-link(href='#')
             i.fas.fa-clipboard-list.fs-5
             span Booking
-        li.nav-item.me-3
-          a.nav-link(href='#')
+        li.nav-item.dropdown.me-3
+          a#navbarDropdown1.nav-link.dropdown-toggle(href='#' data-bs-toggle='dropdown')
             i.fas.fa-bell.fs-5
             span Notification
+          ul.dropdown-menu.scrollable-menu(role='menu' aria-labelledby='navbarDropdown1')
+            each not in notify
+              li
+                a(href='#')
+                  i.fas.fa-bell.fs-5
+                    span=not.notificationTitle
+              hr
+              
         li.nav-item.dropdown.active
-          a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
-            img.rounded-circle.z-depth-0(src=`/img/users/${user.photo}` alt='avatar image' height='25')
-            =user.name
-          ul.dropdown-menu(aria-labelledby='navbarDropdown')
-            li
-              a.dropdown-item(href='#') My account
-            li
-              a.dropdown-item(href='#') Blog
-            li
-              a.dropdown-item(href='#') Private Policy
-            li
-              a.dropdown-item(href='#') Terms of uses
-            li
-              hr.dropdown-divider
-            li
-              a#logout.dropdown-item(href='#') LOGOUT
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false')
+              img.rounded-circle.z-depth-0(src=`/img/users/${user.photo}` alt='avatar image' height='25')
+              =user.name
+            ul.dropdown-menu(aria-labelledby='navbarDropdown')
+              li
+                a.dropdown-item(href='#') My account
+              li
+                a.dropdown-item(href='#') Blog
+              li
+                a.dropdown-item(href='#') Private Policy
+              li
+                a.dropdown-item(href='#') Terms of uses
+              li
+                hr.dropdown-divider
+              li
+                a#logout.dropdown-item(href='#') LOGOUT
 .banner-item.active
   .container
     .site-content
@@ -263,6 +271,33 @@ script(src='https://unpkg.com/swiper/swiper-bundle.js')
 script(src='https://unpkg.com/swiper/swiper-bundle.min.js')
 script(src='https://js.stripe.com/v3/')
 script(src='/js/bundle.js')
+script(src='/socket.io/socket.io.js')
+script.
+  const socket = io();
+  socket.on('notification', (title, body)=> {
+  
+    showNotification(title, body);
+    
+  })
+  var Notification = window.Notification || window.mozNotification || window.webkitNotification;
+  function showNotification(title, body){
+    console.log(title.body)
+    const notification = new Notification(title.title, {
+      body: title.body
+    })
+    notification.onclick=(e)=> {
+      window.location.href = 'https://google.com'
+    }
+  }
+  console.log(Notification.permission)
+  if(Notification.permission !== 'denied'){
+    Notification.requestPermission().then(permission => {
+      if(permission === 'granted'){
+        console.log('granted')
+      }
+    })
+
+  }
 script.
   var mySwiper = new Swiper('#property-slider .swiper-container', {
   // Optional parameters

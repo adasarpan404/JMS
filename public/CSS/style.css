@@ -11,7 +11,20 @@ body{
 .dropdown-toggle::after{
     display: none;
 }
-
+.scrollable-menu {
+    height: auto;
+    max-height: 300px;
+    overflow-x: hidden;
+}
+.scrollable-menu a{
+    text-decoration: none;
+}
+.scrollable-menu a i{
+    color: #1fab89;
+}
+.dropdown-menu{
+    min-width: 17rem;
+}
 
 .navbar{
   

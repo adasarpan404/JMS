@@ -14,7 +14,6 @@ router.post('/resetPassword', maidAuth.resetPassword);
 router.post('/verify', maidAuth.verify);
 router.get('/resendOTP', maidAuth.protect, maidAuth.resendTo);
 router.post('/logininWithMaid', maidAuth.loginWithMaid);
-
 router.get('/', authController.protect, maidController.getAllMaid);
 router.post('/updatePersonalInformation', maidAuth.protect, maidAuth.updatePersonalInformation);
 router.patch('/updateMe', maidAuth.protect, maidController.uploadUserPhoto, maidController.resizeUserPhoto, maidController.updateMe);
