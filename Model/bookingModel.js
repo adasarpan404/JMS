@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+
 const bookingSchema = new mongoose.Schema({
     maid: {
         type: mongoose.Schema.ObjectId,
@@ -8,6 +9,7 @@ const bookingSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         required: [true, 'booking must belongs to user']
     },
+
     paid: {
         type: Boolean,
         default: false,
@@ -16,10 +18,13 @@ const bookingSchema = new mongoose.Schema({
         type: Date,
         default: Date.now(),
     }
+
 }, {
     toJSON: { virtuals: true },
     toObject: { virtuals: true }
-})
+}
+)
+
 bookingSchema.pre(/^find/, function (next) {
     this.populate({
         path: 'Maid',
@@ -34,3 +39,5 @@ bookingSchema.pre('save', function (next) {
 })
 
 const Booking = mongoose.model('Booking', bookingSchema)
+
+module.exports = Booking;

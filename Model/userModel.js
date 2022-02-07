@@ -5,18 +5,13 @@ const validator = require('validator')
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'please tell us your name']
+        required: [true, ' please tell us your name']
     },
     email: {
         type: String,
         required: [true, 'please provide your email'],
         unique: true,
         validate: [validator.isEmail, 'Please provide a valid email']
-    },
-    phonenumber: {
-        type: String,
-        required: [true, 'please provide phone number'],
-        unique: true,
     },
     password: {
         type: String,
@@ -26,12 +21,12 @@ const userSchema = new mongoose.Schema({
     },
     passwordConfirm: {
         type: String,
-        required: [true, ' please confirm your password'],
+        required: [true, 'please confirm your password'],
         validate: {
             validator: function (el) {
                 return el === this.password;
             },
-            message: 'Passwords are not the same! '
+            message: 'Passwords are not the same!'
         }
     },
     role: {
@@ -39,10 +34,28 @@ const userSchema = new mongoose.Schema({
         enum: ['user', 'regional-admin', 'admin'],
         default: 'user'
     },
+    photo: {
+        type: String,
+        default: 'default.jpg'
+    },
+    phonenumber: {
+        type: Number,
+        required: [true, 'You have to enter phone number'],
+        unique: true,
+
+    },
     city: {
         type: String,
         enum: ['Delhi', 'Noida', 'Mumbai'],
         default: 'Noida'
+    },
+    wallet: {
+        type: Number,
+        default: 0,
+    },
+    verified: {
+        type: Boolean,
+        default: false,
     },
     passwordChangeAt: Date,
     OTP: String,
@@ -52,21 +65,21 @@ const userSchema = new mongoose.Schema({
         default: true,
         select: false,
     }
-}, {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true }
+
 });
 
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password')) return next();
+
     this.password = await bcrypt.hash(this.password, 12);
+
     this.passwordConfirm = undefined;
     next();
-});
-
+})
 userSchema.pre('save', function (next) {
     if (!this.isModified('password') || this.isNew) return next();
-    this.passwordChangeAt = Date.now() - 1000;
+
+    this.passwordChangedAt = Date.now() - 1000;
     next();
 });
 
@@ -82,12 +95,13 @@ userSchema.methods.correctPassword = async function (candidatePassword, userPass
 userSchema.methods.changePasswordAfter = function (JWTtimeStamp) {
     if (this.passwordChangeAt) {
         const changedTimestamp = parseInt(
-            this.passwordChangeAt.getTime() / 1000,
+            this.passwordChangedAt.getTime() / 1000,
             10
         );
         return JWTtimeStamp < changedTimestamp
     }
     return false;
+
 }
 
 userSchema.methods.createPasswordResetToken = function () {
@@ -98,4 +112,5 @@ userSchema.methods.createPasswordResetToken = function () {
     return OTPString;
 }
 const User = mongoose.model('User', userSchema);
+
 module.exports = User;

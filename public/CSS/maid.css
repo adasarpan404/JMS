@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 
 body {
     font-family: 'Roboto', sans-serif;
 }
-
 .alert {
     position: fixed;
     top: 0;
@@ -130,80 +128,72 @@ p {
     background-color: #206A5D;
     border-color: #206A5D;
 }
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+       
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    }
+    section{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+    }
+   section .imgbx{
+position: relative;
+width: 50%;
+height: 100%;
+    }
+ 
+    section .imgbx img{
+        position:absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        
+    }
+    h2{
+    
+position: absolute;
+z-index: 1;
+width:68%;
 
-
-}
-
-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-}
-
-section .imgbx {
-    position: relative;
-    width: 50%;
-    height: 100%;
-}
-
-section .imgbx img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-}
-
-h2 {
-
-    position: absolute;
-    z-index: 1;
-    width: 68%;
-
-}
-
-.imgbx a {
-    position: absolute;
-    z-index: 1;
-    width: 68%;
-    color: white;
-    text-decoration: none;
-    top: 23px;
-    left: 15px;
-}
-
-.imgbx h2 {
-    top: 143px;
+    }
+    .imgbx a {
+        position: absolute;
+z-index: 1;
+width:68%;
+color: white;
+text-decoration: none;
+top: 23px;
+        left: 15px;
+    }
+    .imgbx h2{
+        top: 143px;
     left: 80px;
     display: grid;
     font-size: 3rem;
     color: blanchedalmond;
     font-family: 'Roboto', sans-serif;
     line-height: 1.5;
-}
-
-.p1 {
-    top: 425px;
+    }
+    .p1 {
+        top: 425px;
     left: 80px;
     font-size: 1.1rem;
     color: #f9f8f891;
     margin-bottom: 15px;
     position: absolute;
-    z-index: 1;
-    width: 68%;
-    font-family: 'Heebo', sans-serif;
-
-}
-
-.p2 {
+z-index: 1;
+width:68%;
+font-family: 'Heebo', sans-serif;
+    
+    }
+.p2{
     display: inline-block;
     top: 495px;
     left: 80px;
@@ -211,29 +201,26 @@ h2 {
     color: #f9f8f891;
     margin-bottom: 15px;
     position: absolute;
-    z-index: 1;
-    width: 68%;
-    font-family: 'Heebo', sans-serif;
-
+z-index: 1;
+width:68%;
+font-family: 'Heebo', sans-serif;
+   
 }
-
-.contentbx {
+.contentbx{
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
     width: 50%;
     height: 100%;
 }
-
-.contentbx img {
+.contentbx img{
     position: absolute;
     width: 450px;
     opacity: 0.06;
     z-index: -1;
 }
-
-.heading2 h3 {
+.heading2 h3{
     font-family: 'Roboto', sans-serif;
     position: absolute;
     top: 157px;
@@ -241,7 +228,6 @@ h2 {
     font-size: 2rem;
     color: #205a6d;
 }
-
 .heading2 p {
     position: absolute;
     top: 200px;
@@ -250,14 +236,13 @@ h2 {
     color: #707070;
     /* right: 189px; */
     font-size: 1.2rem;
-
+  
 }
 
-.button {
+.button{
     width: 55%;
 }
-
-.button1 {
+.button1{
     position: relative;
     top: 100px;
     width: 100%;
@@ -273,8 +258,7 @@ h2 {
     border-radius: 50px;
     text-align: center;
 }
-
-.button2 {
+.button2{
     position: relative;
     top: 120px;
     width: 100%;
@@ -293,331 +277,288 @@ h2 {
 }
 
 
-@media (max-width: 1247px) and (min-width: 913px) {
-    .imgbx h2 {
-        top: 90px;
-        font-size: 2.8rem;
-    }
+@media  (max-width: 1247px) and (min-width: 913px){
+     .imgbx h2{
+         top: 90px;
+         font-size: 2.8rem;
+     }
+     .p1{
+         top: 392px;
+         font-size: 1rem;
 
-    .p1 {
-        top: 392px;
-        font-size: 1rem;
-
-    }
-
-    .p2 {
-        top: 450px;
-        font-size: 1rem;
-    }
-
-    .button1 {
-        top: 92px;
-    }
-
-    .button2 {
-        top: 110px;
-    }
-
-    .contentbx img {
-        width: 400px;
-    }
+     }
+     .p2{
+         top: 450px;
+         font-size: 1rem;
+     }
+     .button1{
+top: 92px;
+     }
+     .button2{
+top: 110px;
+     }
+     .contentbx img{
+width: 400px;
+     }
 }
-
-@media (max-width: 912px) and (min-width: 663px) {
-    .imgbx h2 {
+@media (max-width: 912px) and (min-width: 663px){
+    .imgbx h2{
         font-size: 2.3rem;
-        top: 90px;
-        left: 35px;
-        width: 77%;
+    top: 90px;
+    left: 35px;
+    width: 77%;
     }
-
-    .p1 {
+    .p1{
         top: 342px;
-        font-size: 1rem;
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 35px;
-        width: 77%;
+    font-size: 1rem;
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 35px;
+    width: 77%;
 
     }
-
-    .p2 {
+    .p2{
         top: 400px;
-        font-size: 1rem;
-        /* top: 380px; */
+    font-size: 1rem;
+    /* top: 380px; */
 
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 35px;
-        width: 77%;
-        padding: 0 1px;
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 35px;
+    width: 77%;
+    padding: 0 1px;
     }
-
-    .button1 {
+    .button1{
         font-size: 20px;
         top: 120px;
     }
-
-    .button2 {
+    .button2{
         font-size: 20px;
         top: 130px;
     }
-
-    .heading2 p {
+    .heading2 p{
         font-size: 1.2rem;
     }
-
-    .contentbx img {
-        width: 310px;
-    }
+    .contentbx img{
+width: 310px;
 }
-
-@media (max-width: 662px) and (min-width: 528px) {
-    .imgbx h2 {
+}
+@media (max-width: 662px) and (min-width: 528px){
+    .imgbx h2{
         font-size: 2.1rem;
-        top: 90px;
-        left: 36px;
-        width: 77%;
+    top: 90px;
+    left: 36px;
+    width: 77%;
     }
-
-    .p1 {
+    .p1{
         top: 375px;
-        font-size: 0.9rem;
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 35px;
-        width: 77%;
+    font-size: 0.9rem;
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 35px;
+    width: 77%;
 
     }
-
-    .p2 {
+    .p2{
         top: 434px;
-        font-size: 0.9rem;
-        /* top: 380px; */
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 35px;
-        width: 77%;
-        padding: 0 1px;
+    font-size: 0.9rem;
+    /* top: 380px; */
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 35px;
+    width: 77%;
+    padding: 0 1px;
     }
-
-    .button1 {
+    .button1{
         font-size: 20px;
         top: 115px;
     }
-
-    .button2 {
+    .button2{
         font-size: 20px;
         top: 121px;
     }
-
-    .heading2 p {
+    .heading2 p{
         font-size: 1.1rem;
     }
-
-    .contentbx img {
-        width: 266px;
-    }
-
-    h5 {
-        display: none;
-    }
-
+    .contentbx img{
+width: 266px;
 }
 
-@media (max-width: 527px) and (min-width: 425px) {
-    .imgbx h2 {
+h5{
+display: none;
+}
+
+}
+@media (max-width: 527px) and (min-width: 425px){
+    .imgbx h2{
         font-size: 2rem;
-        top: 90px;
-        left: 36px;
-        width: 77%;
+    top: 90px;
+    left: 36px;
+    width: 77%;
     }
-
-    .p1 {
+    .p1{
         top: 380px;
-        font-size: 0.8rem;
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 38px;
-        width: 77%;
+    font-size: 0.8rem;
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 38px;
+    width: 77%;
 
     }
-
-    .p2 {
+    .p2{
         top: 440px;
-        font-size: 0.8rem;
-        /* top: 380px; */
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 38px;
-        width: 77%;
-
+    font-size: 0.8rem;
+    /* top: 380px; */
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 38px;
+    width: 77%;
+    
     }
-
-    .button1 {
+    .button1{
         font-size: 17px;
         top: 100px;
     }
-
-    .button2 {
+    .button2{
         font-size: 17px;
         top: 110px;
     }
-
-    .heading2 p {
+    .heading2 p{
         font-size: 0.9rem;
     }
-
-    .contentbx img {
+    .contentbx img{
         width: 212px;
-        top: 167px;
-    }
-
-    h5 {
-        display: none;
-    }
-
+    top: 167px;
 }
 
-@media (max-width: 425px) and (min-width: 327px) {
-    .imgbx h2 {
+h5{
+    display: none;
+}
+
+}
+@media (max-width: 425px) and (min-width: 327px){
+    .imgbx h2{
         font-size: 1.9rem;
-        top: 90px;
-        left: 12px;
-        width: 77%;
+    top: 90px;
+    left: 12px;
+    width: 77%;
     }
-
-    .p1 {
+    .p1{
         top: 357px;
-        font-size: 0.7rem;
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 15px;
-        width: 77%;
+    font-size: 0.7rem;
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 15px;
+    width: 77%;
 
     }
-
-    .p2 {
+    .p2{
         top: 415px;
-        font-size: 0.7rem;
-        /* top: 380px; */
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 15px;
-        width: 77%;
+    font-size: 0.7rem;
+    /* top: 380px; */
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 15px;
+    width: 77%;
     }
-
-    .button1 {
+    .button1{
         font-size: 15px;
-        top: 128px;
-        padding: 10px;
+    top: 128px;
+    padding: 10px;
     }
-
-    .button2 {
+    .button2{
         font-size: 15px;
-        top: 135px;
-        padding: 9px;
+    top: 135px;
+    padding: 9px;
     }
-
-    .heading2 p {
+    .heading2 p{
         font-size: 0.9rem;
         top: 195px;
     }
-
-    .heading2 h3 {
+    .heading2 h3{
         font-size: 1.5rem;
     }
+    .contentbx img{
+width: 150px;
+}
 
-    .contentbx img {
-        width: 150px;
-    }
-
-    h5 {
-        display: none;
-    }
+h5{
+    display: none;
+}
 
 }
 
-@media (max-width: 327px) {
-    .imgbx h2 {
+@media (max-width: 327px){
+    .imgbx h2{
         font-size: 1.3rem;
-        top: 117px;
-        left: 12px;
-        width: 77%;
+    top: 117px;
+    left: 12px;
+    width: 77%;
     }
-
-    .p1 {
+    .p1{
         top: 316px;
-        font-size: 0.7rem;
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 15px;
-        width: 77%;
+    font-size: 0.7rem;
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 15px;
+    width: 77%;
 
     }
-
-    .p2 {
+    .p2{
         top: 381px;
-        font-size: 0.7rem;
-        /* top: 380px; */
-        /* font-size: 2.5rem; */
-        /* top: 90px; */
-        left: 15px;
-        width: 77%;
+    font-size: 0.7rem;
+    /* top: 380px; */
+    /* font-size: 2.5rem; */
+    /* top: 90px; */
+    left: 15px;
+    width: 77%;
     }
-
-    .button1 {
+    .button1{
         font-size: 15px;
-        top: 128px;
-        padding: 10px 0;
+    top: 128px;
+    padding: 10px 0;
     }
-
-    .button2 {
+    .button2{
         font-size: 15px;
-        top: 135px;
-        padding: 10px 0;
+    top: 135px;
+    padding:  10px 0;
     }
-
-    .heading2 p {
+    .heading2 p{
         font-size: 0.9rem;
         top: 185px;
     }
-
-    .heading2 h3 {
+    .heading2 h3{
         font-size: 1.2rem;
     }
-
-    .contentbx img {
-        width: 140px;
-    }
-
-    h5 {
-        display: none;
-    }
-
+    .contentbx img{
+width: 140px;
 }
 
-footer {
-    position: absolute;
-    top: 23px;
-    right: 15px;
-    display: flex;
-
+h5{
+    display: none;
 }
 
-h5 {
-    font-size: 15px;
-    color: #0000008f;
-    font-family: 'Roboto', sans-serif;
-    padding-right: 6px;
 }
+footer{
+        position: absolute;
+        top: 23px;
+        right: 15px;
+        display: flex;
 
-footer a {
-    text-decoration: none;
-    color: #206a5d;
-    font-size: 13px;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-family: 'Roboto', sans-serif;
+     }
+     h5{
+        font-size: 15px;
+        color: #0000008f;
+        font-family: 'Roboto', sans-serif;
+        padding-right: 6px;
+     }
+     footer a{
+         text-decoration: none;
+         color: #206a5d;
+         font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-family: 'Roboto', sans-serif;
+    
+     }
 
-}

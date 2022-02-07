@@ -1,22 +1,23 @@
-const AppError = require('../utils/appError');
-const catchAsync = require('../utils/catchAsync');
+const AppError = require('../Utils/appError');
+const catchAsync = require('../Utils/catchAsync');
 const Maid = require('./../Model/maidModel')
 const multer = require('multer')
 const sharp = require('sharp')
 const factory = require('./handleFactory')
+
 
 const multerStorage = multer.memoryStorage();
 const multerFilter = (req, file, cb) => {
     if (file.mimetype.startsWith('image')) {
         cb(null, true)
     } else {
-        cb(new AppError('Not an image! please upload only images', 400))
+        cb(new AppError('Not an image! please upload only images.', 400), false)
     }
 }
 const upload = multer({
     storage: multerStorage,
     fileFilter: multerFilter
-})
+});
 
 exports.uploadUserPhoto = upload.single('photo');
 exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
@@ -29,6 +30,13 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
 
     next();
 })
+
+exports.getTop5Maids = (req, res, next) => {
+    req.query.limit = '5';
+    req.query.sort = '-ratingsAverage,price'
+    req.query.fields = 'name, price, ratingsAverage, role, photos, videos, verified, city'
+    next();
+}
 
 const filterObj = (obj, ...allowedFields) => {
     const newObj = {};
@@ -44,10 +52,12 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     }
     const filterBody = filterObj(req.body, 'name', 'email');
     if (req.file) filterBody.photo = req.file.filename;
-    const updateUser = await User.findByIdAndUpdate(req.user.id, filterBody, {
+
+    const updatedUser = await Maid.findByIdAndUpdate(req.user.id, filterBody, {
         new: true,
         runValidators: true
     })
+
     res.status(200).json({
         status: 'success',
         data: {
@@ -56,15 +66,44 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     })
 })
 
-exports.deleteMe = catchAsync(async (req, res, next) => {
-    await User.findByIdAndUpdate(req.user.id, { active: false });
-    res.status(204).json({
+exports.getMaidInCity = catchAsync(async (req, res, next) => {
+    const maid = await Maid.find({
+        city: req.body.city
+    })
+    if (!maid) {
+        return next(new AppError('No maid found in this city', 400))
+    }
+
+    res.status(200).json({
         status: 'success',
-        data: null
+        data: {
+            maid,
+        }
+    });
+
+})
+
+exports.getMaidInYourCity = catchAsync(async (req, res, next) => {
+    const maid = await Maid.find({
+        city: req.user.city
+    })
+    if (!maid) {
+        return next(new AppError('No maid found in your city', 400))
+    }
+
+    res.status(200).json({
+        status: 'success',
+        data: {
+            maid,
+        }
     })
 })
 
-exports.getMaid = factory.getOne(Maid);
-exports.getAllMaid = factory.getAll(Maid);
-exports.updateMaid = factory.updateOne(Maid);
-exports.deleteMaid = factory.deleteOne(Maid);
+
+exports.getMaid = factory.getOne(Maid)
+
+exports.getAllMaid = factory.getAll(Maid)
+
+exports.updateMaid = factory.updateOne(Maid)
+
+exports.deleteMaid = factory.deleteOne(Maid)

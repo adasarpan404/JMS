@@ -3,34 +3,48 @@ const morgan = require('morgan')
 const xss = require('xss-clean')
 const path = require('path')
 const cors = require('cors')
-const compression = require('compression')
-const mongosantize = require('express-mongo-sanitize')
+const compression = require('compression');
+const mongoSantize = require('express-mongo-sanitize')
 const helmet = require('helmet')
+const viewRouter = require('./Router/viewRouter')
+const globalErrorHandler = require('./Controllers/errorController')
+const userRouter = require('./Router/userRouter');
+const maidRouter = require('./Router/maidRouter');
+const bookingRouter = require('./Router/bookingRoute')
+const reviewRouter = require('./Router/reviewRouter')
+const requestRouter = require('./Router/requestRouter')
+const AppError = require('./Utils/appError')
 const cookieParser = require('cookie-parser')
+
 const app = express();
-const bookingRouter = require('./router/bookingRouter')
-const reviewRouter = require('./router/reviewRouter')
-const userRouter = require('./router/userRouter')
-const maidRouter = require('./router/maidRouter')
-app.use(morgan('dev'))
+
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(morgan('dev'))
 
-app.use(xss());
-app.use(mongosantize());
-app.use(cors());
 app.use(helmet());
+app.use(xss());
+app.use(mongoSantize());
+
+
+app.use(cors());
 app.options('*', cors());
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser())
 app.use(compression());
-app.use('/api/v1/booking', bookingRouter);
+
+app.use('/', viewRouter)
+app.use('/api/v1/booking', bookingRouter)
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/maids', maidRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/request', requestRouter);
+
 app.all('*', (req, res, next) => {
-    next(new AppError(`can't find ${req.originalUrl} on this server!`, 404))
+    next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+
 })
+
+app.use(globalErrorHandler)
 module.exports = app;

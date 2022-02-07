@@ -1,6 +1,6 @@
-const nodemailer = require('nodemailer');
-const pug = require('pug');
-const htmlTOText = require('html-to-text');
+const nodemailer = require('nodemailer')
+const pug = require('pug')
+const htmlToText = require('html-to-text')
 
 module.exports = class Email {
     constructor(user, content) {
@@ -14,15 +14,18 @@ module.exports = class Email {
             host: process.env.EMAIL_HOST,
             port: process.env.EMAIL_PORT,
             service: 'SenderGrid',
+
+
             auth: {
                 user: process.env.SENDGRID_USERNAME,
                 pass: process.env.SENDGRID_PASSWORD
             }
         })
+
         transporter.verify((err, success) => {
-            if (err) { console.error(err) }
+            if (err) { console.error(err); }
             else {
-                console.log('your config is correct')
+                console.log('Your config is correct');
             }
         });
         return transporter;
@@ -38,19 +41,27 @@ module.exports = class Email {
             to: this.to,
             subject,
             html,
-            text: htmlTOText.htmlToText.fromString(html)
+            text: htmlToText.fromString(html)
         }
         await this.newTransport().sendMail(mailOptions);
-
     }
     async sendWelcome() {
-        await this.send('welcome', ' welcome to the HireAMaid Family')
-        console.log('email sent');
+        await this.send('welcome', 'Welcome to the HireAMaid Family')
+        console.log('email sent')
     }
+
     async sendPasswordReset() {
-        await this.send('passwordReset', 'Your OTP(valid for only 4 minutes)')
+        await this.send(
+            'passwordReset',
+            'Your OTP (valid for only 4 minutes)'
+        )
+
     }
     async sendWelcomeOTP() {
-        await this.send('WelcomeOTP', 'Your OTP(valid for only 4 minutes)')
+        await this.send(
+            'welcomeOTP',
+            'your OTP (valid for only 4 minutes)'
+        )
     }
+
 }
